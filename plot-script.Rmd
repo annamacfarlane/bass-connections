@@ -28,6 +28,7 @@ individ_files <- lapply(filelist, function(x) {
                        file = sub(pattern = "\\.txt$", 
                                   replacement = ".csv", x = x))
  })
+view(individ_files)
 ```
 
 ## R Markdown
