@@ -7,19 +7,35 @@ output: html_document
 
 ```{r setup, include=FALSE}
 library(tidyverse)
-mouse <- read.csv("B53291_invivoAPOE1_measured_in_native_space_stats.txt")
+
 ms <- read.csv("B53291_invivoAPOE1_measured_in_native_space_stats copy.csv")
 ms2 <- read.csv("B53257_invivoAPOE1_measured_in_native_space_stats.csv")
 samba <- read_excel("19.abb.14_021120_with_SAMBA_runnos.xlsx")
 
-view(ms)
+#temp = list.files(pattern="*.csv")
+#myfiles = lapply(temp, read.delim)
 
+#view(myfiles)
+
+```
+
+```{r import-all-files}
+filelist <- list.files(pattern = ".txt")
+view(filelist)
+individ_files <- lapply(filelist, function(x) { 
+                            textfile <- read.table(x)
+                            write.csv(textfile, 
+                       file = sub(pattern = "\\.txt$", 
+                                  replacement = ".csv", x = x))
+ })
 ```
 
 ## R Markdown
 
 ```{r brain-vol}
 calc_prop_vol <- function(ms) {
+  vols <- c()
+  
   last_row <- nrow(ms)
 
   all_brain <- ms %>% 
@@ -33,6 +49,19 @@ calc_prop_vol <- function(ms) {
     select(volume_mm3)  
   
   prop_hip <- hip_vol/vol
+  
+  vols <- c(vols, prop_hip)
+  return(vols)
 }
+
+calc_prop_vol(ms)
+
+#vols <- pmap_dbl(list(height_m = pokemon$height_m, weight_kg = pokemon$weight_kg), bmi_calc)
+
+#result <- lapply(myfiles, function(x) {
+ #         uniroot(npv, c(0,1), x=x)$root
+#})
+
+result <- lapply(individ_files, calc_prop_vol)
 ```
 
