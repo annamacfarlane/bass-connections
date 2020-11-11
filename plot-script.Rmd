@@ -6,25 +6,33 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+mouse <- read.csv("B53291_invivoAPOE1_measured_in_native_space_stats.txt")
+ms <- read.csv("B53291_invivoAPOE1_measured_in_native_space_stats copy.csv")
+ms2 <- read.csv("B53257_invivoAPOE1_measured_in_native_space_stats.csv")
+samba <- read_excel("19.abb.14_021120_with_SAMBA_runnos.xlsx")
+
+view(ms)
+
 ```
 
 ## R Markdown
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+```{r brain-vol}
+calc_prop_vol <- function(ms) {
+  last_row <- nrow(ms)
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+  all_brain <- ms %>% 
+    select(volume_mm3) %>% 
+    slice(2:last_row)
 
-```{r cars}
-summary(cars)
+  vol <- sum(all_brain)
+  
+  hip_vol <- ms %>% 
+    filter(ROI == 52) %>% 
+    select(volume_mm3)  
+  
+  prop_hip <- hip_vol/vol
+}
 ```
 
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
