@@ -2,29 +2,32 @@
 title: "violin-plots"
 author: "Anna MacFarlane"
 date: "11/14/2020"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+data <- read.csv("memri.csv")
+view(data)
 ```
 
-## R Markdown
+## Violin plots 
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+```{r plots}
+graph <- data %>% 
+  filter(! is.na(Proportional.Volume)) %>% 
+  filter(! is.na(genotype)) %>% 
+  filter(genotype != "") %>% 
+  group_by(genotype) %>% 
+  select(Proportional.Volume, genotype)
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+ggplot(data = graph, aes(factor(genotype), Proportional.Volume)) +
+  geom_violin() +
+  labs(x = "Genotype",
+       y = "Hippocampal prop. vol. (cubic mm)",
+       title = "Distributions of hippocampal proportional volumes by genotype") 
+  
 ```
 
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
