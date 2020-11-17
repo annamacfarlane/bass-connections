@@ -10,7 +10,8 @@ output:
 ```{r setup, include=FALSE}
 library(tidyverse)
 data <- read.csv("memri.csv")
-view(data)
+cvn_data <- read.csv("CVNanalysis.csv")
+view(cvn_data)
 ```
 
 ## Violin plots 
@@ -20,14 +21,45 @@ graph <- data %>%
   filter(! is.na(Proportional.Volume)) %>% 
   filter(! is.na(genotype)) %>% 
   filter(genotype != "") %>% 
-  group_by(genotype) %>% 
-  select(Proportional.Volume, genotype)
+  filter(genotype != "HN") %>% 
+  mutate(geno = case_when(
+    genotype == "APOE2" | genotype == "APOE22" ~ "APOE2",
+    genotype == "APOE3" | genotype == "APOE33" ~ "APOE3",
+    genotype == "CVN" ~ "CVN"
+  )) %>% 
+  group_by(geno) %>% 
+  select(Proportional.Volume, geno)
 
-ggplot(data = graph, aes(factor(genotype), Proportional.Volume)) +
+ggplot(data = graph, aes(factor(geno), Proportional.Volume)) +
   geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
   labs(x = "Genotype",
        y = "Hippocampal prop. vol. (cubic mm)",
-       title = "Distributions of hippocampal proportional volumes by genotype") 
+       title = "Distributions of hippocampal proportional volumes by genotype",
+       subtitle = "Red points denoting outliers") 
+
   
 ```
+```{r cvn-disaggregation}
+cvn_graph <- cvn_data %>% 
+  filter(! is.na(Proportional.Volume)) %>%
+  mutate(treat = case_when(
+    Treatment == "runningwheel_only" ~ "Running wheel only",
+    Treatment == "treadmill" ~ "Treadmill"
+  )) %>% 
+  group_by(treat) %>% 
+  select(Proportional.Volume, treat)
 
+ggplot(data = cvn_graph, aes(factor(treat), Proportional.Volume)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Treatment",
+       y = "Hippocampal prop. vol. (cubic mm)",
+       title = "Distributions of hippocampal proportional volumes by treatment",
+       subtitle = "In CVN genotype with red points denoting outliers") 
+
+t.test(cvn_graph$treat)
+  
+```
