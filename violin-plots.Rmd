@@ -49,7 +49,17 @@ cvn_graph <- cvn_data %>%
     Treatment == "treadmill" ~ "Treadmill"
   )) %>% 
   group_by(treat) %>% 
-  select(Proportional.Volume, treat)
+  select(Proportional.Volume, treat) 
+
+rw <- cvn_data %>% 
+  filter(! is.na(Proportional.Volume)) %>%
+  filter(Treatment == "runningwheel_only") %>% 
+  pull(Proportional.Volume)
+
+tm <- cvn_data %>% 
+  filter(! is.na(Proportional.Volume)) %>%
+  filter(Treatment == "treadmill") %>% 
+  pull(Proportional.Volume)
 
 ggplot(data = cvn_graph, aes(factor(treat), Proportional.Volume)) +
   geom_violin() +
@@ -60,6 +70,6 @@ ggplot(data = cvn_graph, aes(factor(treat), Proportional.Volume)) +
        title = "Distributions of hippocampal proportional volumes by treatment",
        subtitle = "In CVN genotype with red points denoting outliers") 
 
-t.test(cvn_graph$treat)
+t.test(rw, tm)
   
 ```
