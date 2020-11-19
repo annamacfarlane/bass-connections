@@ -10,8 +10,9 @@ output:
 ```{r setup, include=FALSE}
 library(tidyverse)
 data <- read.csv("memri.csv")
+data2 <- read.csv("memri2.csv")
 cvn_data <- read.csv("CVNanalysis.csv")
-view(cvn_data)
+view(data2)
 ```
 
 ## Violin plots 
@@ -73,3 +74,96 @@ ggplot(data = cvn_graph, aes(factor(treat), Proportional.Volume)) +
 t.test(rw, tm)
   
 ```
+```{r other-regions}
+graph_lv <- data2 %>% 
+  filter(! is.na(Proportional.Lateral.Ventricle.Volume)) %>% 
+  filter(! is.na(genotype)) %>% 
+  filter(genotype != "") %>% 
+  filter(genotype != "HN") %>% 
+  mutate(geno = case_when(
+    genotype == "APOE2" | genotype == "APOE22" ~ "APOE2",
+    genotype == "APOE3" | genotype == "APOE33" ~ "APOE3",
+    genotype == "CVN" ~ "CVN"
+  )) %>% 
+  group_by(geno) %>% 
+  select(Proportional.Lateral.Ventricle.Volume, geno)
+
+ggplot(data = graph_lv, aes(factor(geno), Proportional.Lateral.Ventricle.Volume)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "Lateral Ventricle prop. vol. (cubic mm)",
+       title = "Distributions of lateral ventricle proportional volumes by genotype",
+       subtitle = "Red points denoting outliers") 
+
+graph_vol <- data2 %>% 
+  filter(! is.na(Total.Volume)) %>% 
+  filter(! is.na(genotype)) %>% 
+  filter(genotype != "") %>% 
+  filter(genotype != "HN") %>% 
+  mutate(geno = case_when(
+    genotype == "APOE2" | genotype == "APOE22" ~ "APOE2",
+    genotype == "APOE3" | genotype == "APOE33" ~ "APOE3",
+    genotype == "CVN" ~ "CVN"
+  )) %>% 
+  group_by(geno) %>% 
+  select(Total.Volume, geno)
+
+ggplot(data = graph_vol, aes(factor(geno), Total.Volume)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "Total Volume (cubic mm)",
+       title = "Distributions of total brain volumes by genotype",
+       subtitle = "Red points denoting outliers") 
+
+
+graph_erc <- data2 %>% 
+  filter(! is.na(Proportional.Ectorhinal.Cortex.Volume)) %>% 
+  filter(! is.na(genotype)) %>% 
+  filter(genotype != "") %>% 
+  filter(genotype != "HN") %>% 
+  mutate(geno = case_when(
+    genotype == "APOE2" | genotype == "APOE22" ~ "APOE2",
+    genotype == "APOE3" | genotype == "APOE33" ~ "APOE3",
+    genotype == "CVN" ~ "CVN"
+  )) %>% 
+  group_by(geno) %>% 
+  select(Proportional.Ectorhinal.Cortex.Volume, geno)
+
+ggplot(data = graph_erc, aes(factor(geno), Proportional.Ectorhinal.Cortex.Volume)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "Ectorhinal cortex prop. vol. (cubic mm)",
+       title = "Distributions of ectorhinal cortex proportional volumes by genotype",
+       subtitle = "Red points denoting outliers") 
+
+graph_c <- data2 %>% 
+  filter(! is.na(Proportional.Cerebellum.Volume)) %>% 
+  filter(! is.na(genotype)) %>% 
+  filter(genotype != "") %>% 
+  filter(genotype != "HN") %>% 
+  mutate(geno = case_when(
+    genotype == "APOE2" | genotype == "APOE22" ~ "APOE2",
+    genotype == "APOE3" | genotype == "APOE33" ~ "APOE3",
+    genotype == "CVN" ~ "CVN"
+  )) %>% 
+  group_by(geno) %>% 
+  select(Proportional.Cerebellum.Volume, geno)
+
+ggplot(data = graph_c, aes(factor(geno), Proportional.Cerebellum.Volume)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "Cerebellum prop. vol. (cubic mm)",
+       title = "Distributions of cerebellum proportional volumes by genotype",
+       subtitle = "Red points denoting outliers") 
+
+```
+
+
