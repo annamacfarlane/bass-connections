@@ -12,12 +12,14 @@ library(tidyverse)
 data <- read.csv("memri.csv")
 data2 <- read.csv("memri2.csv")
 cvn_data <- read.csv("CVNanalysis.csv")
-view(data2)
+cvn2 <- read.csv("memri2_edit.csv")
+#view(data2)
+view(cvn2)
 ```
 
 ## Violin plots 
 
-```{r plots}
+```{r plots, echo = FALSE}
 graph <- data %>% 
   filter(! is.na(Proportional.Volume)) %>% 
   filter(! is.na(genotype)) %>% 
@@ -42,7 +44,7 @@ ggplot(data = graph, aes(factor(geno), Proportional.Volume)) +
 
   
 ```
-```{r cvn-disaggregation}
+```{r cvn-disaggregation, echo = FALSE}
 cvn_graph <- cvn_data %>% 
   filter(! is.na(Proportional.Volume)) %>%
   mutate(treat = case_when(
@@ -74,7 +76,7 @@ ggplot(data = cvn_graph, aes(factor(treat), Proportional.Volume)) +
 t.test(rw, tm)
   
 ```
-```{r other-regions}
+```{r other-regions, echo = FALSE}
 graph_lv <- data2 %>% 
   filter(! is.na(Proportional.Lateral.Ventricle.Volume)) %>% 
   filter(! is.na(genotype)) %>% 
@@ -139,7 +141,8 @@ ggplot(data = graph_erc, aes(factor(geno), Proportional.Ectorhinal.Cortex.Volume
   geom_jitter(height = 0, width = 0.3) +
   labs(x = "Genotype",
        y = "Ectorhinal cortex prop. vol. (cubic mm)",
-       title = "Distributions of ectorhinal cortex proportional volumes by genotype",
+       title = "Distributions of ectorhinal cortex 
+proportional volumes by genotype",
        subtitle = "Red points denoting outliers") 
 
 graph_c <- data2 %>% 
@@ -166,4 +169,134 @@ ggplot(data = graph_c, aes(factor(geno), Proportional.Cerebellum.Volume)) +
 
 ```
 
+```{r cvn-lat-ven, echo = FALSE} 
+cvn_graph <- cvn2 %>% 
+  filter(! is.na(Proportional.Lateral.Ventricle.Volume)) %>%
+  mutate(treat = case_when(
+    Treatment == "runningwheel_only" ~ "Running wheel only",
+    Treatment == "treadmill" ~ "Treadmill"
+  )) %>% 
+  group_by(treat) %>% 
+  select(Proportional.Lateral.Ventricle.Volume, treat) 
 
+rw <- cvn2 %>% 
+  filter(! is.na(Proportional.Lateral.Ventricle.Volume)) %>%
+  filter(Treatment == "runningwheel_only") %>% 
+  pull(Proportional.Lateral.Ventricle.Volume)
+
+tm <- cvn2 %>% 
+  filter(! is.na(Proportional.Lateral.Ventricle.Volume)) %>%
+  filter(Treatment == "treadmill") %>% 
+  pull(Proportional.Lateral.Ventricle.Volume)
+
+ggplot(data = cvn_graph, aes(factor(treat), Proportional.Lateral.Ventricle.Volume)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Treatment",
+       y = "Lateral ventrical prop. vol. (cubic mm)",
+       title = "Distributions of lateral ventrical proportional volumes by treatment",
+       subtitle = "In CVN genotype with red points denoting outliers") 
+
+t.test(rw, tm)
+```
+
+
+```{r cvn-total-vol, echo = FALSE} 
+cvn_graph <- cvn2 %>% 
+  filter(! is.na(Total.Volume)) %>%
+  mutate(treat = case_when(
+    Treatment == "runningwheel_only" ~ "Running wheel only",
+    Treatment == "treadmill" ~ "Treadmill"
+  )) %>% 
+  group_by(treat) %>% 
+  select(Total.Volume, treat) 
+
+rw <- cvn2 %>% 
+  filter(! is.na(Total.Volume)) %>%
+  filter(Treatment == "runningwheel_only") %>% 
+  pull(Total.Volume)
+
+tm <- cvn2 %>% 
+  filter(! is.na(Total.Volume)) %>%
+  filter(Treatment == "treadmill") %>% 
+  pull(Total.Volume)
+
+ggplot(data = cvn_graph, aes(factor(treat), Total.Volume)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Treatment",
+       y = "Total brain volume (cubic mm)",
+       title = "Distributions of total brain volumes volumes by treatment",
+       subtitle = "In CVN genotype with red points denoting outliers") 
+
+t.test(rw, tm)
+```
+
+
+```{r cvn-ect, echo = FALSE} 
+cvn_graph <- cvn2 %>% 
+  filter(! is.na(Proportional.Ectorhinal.Cortex.Volume)) %>%
+  mutate(treat = case_when(
+    Treatment == "runningwheel_only" ~ "Running wheel only",
+    Treatment == "treadmill" ~ "Treadmill"
+  )) %>% 
+  group_by(treat) %>% 
+  select(Proportional.Ectorhinal.Cortex.Volume, treat) 
+
+rw <- cvn2 %>% 
+  filter(! is.na(Proportional.Ectorhinal.Cortex.Volume)) %>%
+  filter(Treatment == "runningwheel_only") %>% 
+  pull(Proportional.Ectorhinal.Cortex.Volume)
+
+tm <- cvn2 %>% 
+  filter(! is.na(Proportional.Ectorhinal.Cortex.Volume)) %>%
+  filter(Treatment == "treadmill") %>% 
+  pull(Proportional.Ectorhinal.Cortex.Volume)
+
+ggplot(data = cvn_graph, aes(factor(treat), Proportional.Ectorhinal.Cortex.Volume)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Treatment",
+       y = "Ectorhinal cortex prop. vol. (cubic mm)",
+       title = "Distributions of ectorhinal cortex proportional 
+volumes volumes by treatment",
+       subtitle = "In CVN genotype with red points denoting outliers") 
+
+t.test(rw, tm)
+```
+
+
+```{r cerebellum, echo = FALSE} 
+cvn_graph <- cvn2 %>% 
+  filter(! is.na(Proportional.Cerebellum.Volume)) %>%
+  mutate(treat = case_when(
+    Treatment == "runningwheel_only" ~ "Running wheel only",
+    Treatment == "treadmill" ~ "Treadmill"
+  )) %>% 
+  group_by(treat) %>% 
+  select(Proportional.Cerebellum.Volume, treat) 
+
+rw <- cvn2 %>% 
+  filter(! is.na(Proportional.Cerebellum.Volume)) %>%
+  filter(Treatment == "runningwheel_only") %>% 
+  pull(Proportional.Cerebellum.Volume)
+
+tm <- cvn2 %>% 
+  filter(! is.na(Proportional.Cerebellum.Volume)) %>%
+  filter(Treatment == "treadmill") %>% 
+  pull(Proportional.Cerebellum.Volume)
+
+ggplot(data = cvn_graph, aes(factor(treat), Proportional.Cerebellum.Volume)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Treatment",
+       y = "Cerebellum prop. vol. (cubic mm)",
+       title = "Distributions of cerebellum proportional volumes volumes by treatment",
+       subtitle = "In CVN genotype with red points denoting outliers") 
+
+t.test(rw, tm)
+```
