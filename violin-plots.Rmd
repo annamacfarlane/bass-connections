@@ -1,5 +1,5 @@
 ---
-title: "violin-plots"
+title: "Proportional Volume Distributions by Region"
 author: "Anna MacFarlane"
 date: "11/14/2020"
 output:
@@ -18,7 +18,7 @@ cvn2 <- read.csv("memri2_edit.csv")
 
 ## Violin plots 
 
-```{r plots, echo = FALSE}
+```{r medial-orbital-cortex, echo = FALSE}
 graph <- data3 %>% 
   filter(! is.na(Proportional.Medial_Orbital_Cortex.Volume)) %>% 
   filter(! is.na(genotype)) %>% 
@@ -42,7 +42,7 @@ ggplot(data = graph, aes(factor(geno), Proportional.Medial_Orbital_Cortex.Volume
        subtitle = "Red points denoting outliers") 
 ```
 
-```{r plots, echo = FALSE}
+```{r secondary-motor-cortex, echo = FALSE}
 graph <- data3 %>% 
   filter(! is.na(Proportional.Secondary_Motor_Cortex.Volume)) %>% 
   filter(! is.na(genotype)) %>% 
@@ -66,7 +66,7 @@ ggplot(data = graph, aes(factor(geno), Proportional.Secondary_Motor_Cortex.Volum
        subtitle = "Red points denoting outliers") 
 ```
 
-```{r plots, echo = FALSE}
+```{r lateral-parietal-association-cortex, echo = FALSE}
 graph <- data3 %>% 
   filter(! is.na(Proportional.Lateral_Parietal_Association_Cortex.Volume)) %>% 
   filter(! is.na(genotype)) %>% 
@@ -91,7 +91,7 @@ by genotype",
        subtitle = "Red points denoting outliers") 
 ```
 
-```{r plots, echo = FALSE}
+```{r frontal-association-cortex, echo = FALSE}
 graph <- data3 %>% 
   filter(! is.na(Proportional.Frontal_Association_Cortex.Volume)) %>% 
   filter(! is.na(genotype)) %>% 
@@ -115,7 +115,7 @@ ggplot(data = graph, aes(factor(geno), Proportional.Frontal_Association_Cortex.V
        subtitle = "Red points denoting outliers") 
 ```
 
-```{r plots, echo = FALSE}
+```{r cingulate-cortex-area-29c, echo = FALSE}
 graph <- data3 %>% 
   filter(! is.na(Proportional.Cingulate_Cortex_Area_29c.Volume)) %>% 
   filter(! is.na(genotype)) %>% 
@@ -139,7 +139,7 @@ ggplot(data = graph, aes(factor(geno), Proportional.Cingulate_Cortex_Area_29c.Vo
        subtitle = "Red points denoting outliers") 
 ```
 
-```{r plots, echo = FALSE}
+```{r cingulate-cortex-area-29a, echo = FALSE}
 graph <- data3 %>% 
   filter(! is.na(Proportional.Cingulate_Cortex_Area_29a.Volume)) %>% 
   filter(! is.na(genotype)) %>% 
@@ -163,7 +163,7 @@ ggplot(data = graph, aes(factor(geno), Proportional.Cingulate_Cortex_Area_29a.Vo
        subtitle = "Red points denoting outliers") 
 ```
 
-```{r plots, echo = FALSE}
+```{r cingulate-cortex-area-24a-prime, echo = FALSE}
 graph <- data3 %>% 
   filter(! is.na(Proportional.Cingulate_Cortex_Area_24a_prime.Volume)) %>% 
   filter(! is.na(genotype)) %>% 
@@ -187,7 +187,7 @@ ggplot(data = graph, aes(factor(geno), Proportional.Cingulate_Cortex_Area_24a_pr
        subtitle = "Red points denoting outliers") 
 ```
 
-```{r plots, echo = FALSE}
+```{r proportional-cingulate-cortex-area-24a, echo = FALSE}
 graph <- data3 %>% 
   filter(! is.na(Proportional.Cingulate_Cortex_Area_24a.Volume)) %>% 
   filter(! is.na(genotype)) %>% 
@@ -238,7 +238,7 @@ ggplot(data = graph, aes(factor(geno), Proportional.Volume)) +
   
 ```
 
-```{r plots, echo = FALSE}
+```{r hippocampus, echo = FALSE}
 graph <- data %>% 
   filter(! is.na(Proportional.Volume)) %>% 
   filter(! is.na(genotype)) %>% 
