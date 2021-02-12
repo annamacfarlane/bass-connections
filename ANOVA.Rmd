@@ -11,7 +11,8 @@ library(dplyr)
 library(ggplot2)
 library(broom)
 
-data<-read.csv("memriFullCorrect.csv")
+dataUneven<-read.csv("memriFullCorrect.csv")
+data<-read.csv("evenregions.csv")
 
 data<-data%>%
   filter(! is.na(Proportional.Medial_Orbital_Cortex.Volume))%>%
@@ -126,7 +127,7 @@ data$Proportional.Precuneiform_Nucleus.Volume,
 data$Proportional.Brain_Stem_Rest.Volume,
 data$Proportional.Interpeduncular_Nucleus.Volume,
 data$Proportional.Cerebellar_Cortex.Volume,
-data$Proportional.Dentate_Lateral_Nucleus_of_Cerebellum.Volume,
+#data$Proportional.Dentate_Lateral_Nucleus_of_Cerebellum.Volume,
 data$Proportional.Interposed_Nucleus_of_Cerebellum.Volume,
 data$Proportional.Fastigial_Medial_Dorsolateral_Nucleus_of_Cerebellum.Volume,
 data$Proportional.Fastigial_Medial_Nucleus_of_Cerebellum.Volume,
@@ -187,8 +188,8 @@ data$Proportional.Cingulate_Cortex_Area_25.Volume,
 data$Proportional.Dorsal_Acustic_Stria.Volume,
 data$Proportional.Postsubiculum.Volume,
 data$Proportional.Ventricular_System_4thVentricle.Volume,
-data$Proportional.Microcellular_Tegmental_Nucleus.Volume,
-data$Proportional.Pretectal_Nucleus.Volume,
+#data$Proportional.Microcellular_Tegmental_Nucleus.Volume,
+#data$Proportional.Pretectal_Nucleus.Volume,
 data$Proportional.Latero_Dorsal_Thalamic_Nucleus_Ventro_Lateral.Volume,
 data$Proportional.Latero_Posterior_Nuclei_of_Thalamus.Volume,
 data$Proportional.Anterior_Thalamic_Nuclei.Volume,
@@ -359,7 +360,7 @@ data$Proportional.Ventricular_System_4thVentricle.R.Volume,
 data$Proportional.Microcellular_Tegmental_Nucleus.R.Volume)
 ```
 
-### ANOVA Analysis
+### MANOVA Analysis
 
 ```{r analysis-left}
 anovaLeft <- manova(regionsLeft ~ geno)
