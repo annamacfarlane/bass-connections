@@ -11,7 +11,7 @@ library(dplyr)
 library(ggplot2)
 library(broom)
 
-data<-read.csv("memriFull.csv")
+data<-read.csv("memriFullCorrect.csv")
 
 data<-data%>%
   filter(! is.na(Proportional.Medial_Orbital_Cortex.Volume))%>%
@@ -27,12 +27,15 @@ data<-data%>%
   ))%>%
    group_by(genotype)
 
-regions<-cbind(data.frame(11:229))
-region<-data.frame(cbind(regions))
+view(data)
+
+geno <- data$genotype
+#regions<-cbind(data.frame(11:229))
+#region<-data.frame(cbind(regions))
 ```
 
-```{r.data-adjust}
-test <- cbind(data$Proportional.Cingulate_Cortex_Area_24a.Volume,
+```{r left}
+regionsLeft <- cbind(data$Proportional.Cingulate_Cortex_Area_24a.Volume,
 data$Proportional.Cingulate_Cortex_Area_24a_prime.Volume,
 data$Proportional.Cingulate_Cortex_Area_24b.Volume,
 data$Proportional.Cingulate_Cortex_Area_24b_prime.Volume,
@@ -123,12 +126,12 @@ data$Proportional.Precuneiform_Nucleus.Volume,
 data$Proportional.Brain_Stem_Rest.Volume,
 data$Proportional.Interpeduncular_Nucleus.Volume,
 data$Proportional.Cerebellar_Cortex.Volume,
-data$Proportional.Dentate_(Lateral)_Nucleus_of_Cerebellum.Volume,
+data$Proportional.Dentate_Lateral_Nucleus_of_Cerebellum.Volume,
 data$Proportional.Interposed_Nucleus_of_Cerebellum.Volume,
 data$Proportional.Fastigial_Medial_Dorsolateral_Nucleus_of_Cerebellum.Volume,
 data$Proportional.Fastigial_Medial_Nucleus_of_Cerebellum.Volume,
 data$Proportional.Ventral_Lateral_Lemniscus_Nucleus.Volume,
-data$Proportional.Parabrachial_Nucleus.Volume.
+data$Proportional.Parabrachial_Nucleus.Volume,
 data$Proportional.Parabrachial_Medial_Nucleus_and_Koelliker_Fuse_Nucleus.Volume,
 data$Proportional.Parvicellular_Reticular_Nucleus_and_Principal_Sensory_Trigeminal_Nucleus.Volume,
 data$Proportional.Central_Gray.Volume,
@@ -172,7 +175,8 @@ data$Proportional.Vestibulocochlear_Nerve.Volume,
 data$Proportional.Facial_Nerve.Volume,
 data$Proportional.Longitudinal_Fasciculus_of_Pons.Volume,
 data$Proportional.Medial_Longitudinal_Fasciculus_and_Tectospinal_Tract.Volume,
-data$Proportional.Spinocerebellar_Tract.Volume	Proportional.Medial_Lemniscus.Volume,
+data$Proportional.Spinocerebellar_Tract.Volume,
+data$Proportional.Medial_Lemniscus.Volume,
 data$Proportional.Ventral_Spinocerebellar_Tract.Volume,
 data$Proportional.Middle_Cerebellar_Peduncle.Volume,
 data$Proportional.Superior_Cerebellar_Peduncle.Volume,
@@ -196,8 +200,11 @@ data$Proportional.IntermediateReticularNucleus.Volume,
 data$Proportional.PosteriorDorsal_ParaventricularMedialParvicellular_Posterior_LateralHypothalamus.Volume,
 data$Proportional.Prerubral_Forel.Volume,
 data$Proportional.PVG_of_Hypothalamus.Volume,
-data$Proportional.Basal.Lateral.Amygdala.Volume,
-data$Proportional.Cingulate_Cortex_Area_24a.R.Volume,
+data$Proportional.Basal.Lateral.Amygdala.Volume)
+```
+
+```{r right}
+regionsRight<-cbind(data$Proportional.Cingulate_Cortex_Area_24a.R.Volume,
 data$Proportional.Cingulate_Cortex_Area_24a_prime.R.Volume,
 data$Proportional.Cingulate_Cortex_Area_24b.R.Volume,
 data$Proportional.Cingulate_Cortex_Area_24b_prime.R.Volume,
@@ -288,7 +295,7 @@ data$Proportional.Precuneiform_Nucleus.R.Volume,
 data$Proportional.Brain_Stem_Rest.R.Volume,
 data$Proportional.Interpeduncular_Nucleus.R.Volume,
 data$Proportional.Cerebellar_Cortex.R.Volume,
-data$Proportional.Dentate_(Lateral)_Nucleus_of_Cerebellum.R.Volume,
+data$Proportional.Dentate_Lateral_Nucleus_of_Cerebellum.R.Volume,
 data$Proportional.Interposed_Nucleus_of_Cerebellum.R.Volume,
 data$Proportional.Fastigial_Medial_Dorsolateral_Nucleus_of_Cerebellum.R.Volume,
 data$Proportional.Fastigial_Medial_Nucleus_of_Cerebellum.R.Volume,
@@ -349,14 +356,17 @@ data$Proportional.Cingulate_Cortex_Area_25.R.Volume,
 data$Proportional.Dorsal_Acustic_Stria.R.Volume,
 data$Proportional.Postsubiculum.R.Volume,
 data$Proportional.Ventricular_System_4thVentricle.R.Volume,
-data$Proportional.Microcellular_Tegmental_Nucleus.R.Volume
-)
+data$Proportional.Microcellular_Tegmental_Nucleus.R.Volume)
 ```
 
-###.ANOVA.Analysis
+### ANOVA Analysis
 
-```{r.analysis}
-geno.<-.data$genotype
-fit.<-.manova(region.~.geno)
-summary(fit,.test="Pillai")
+```{r analysis-left}
+anovaLeft <- manova(regionsLeft ~ geno)
+summary(anovaLeft, test="Pillai", tol=0)
+```
+
+```{r analysis-right}
+anovaRight <- manova(regionsRight ~ geno)
+summary(anovaLeft, test="Pillai", tol=0)
 ```
