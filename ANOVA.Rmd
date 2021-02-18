@@ -363,7 +363,8 @@ data$Proportional.Microcellular_Tegmental_Nucleus.R.Volume)
 
 ```{r analysis-left}
 anovaLeft <- manova(regionsLeft ~ geno)
-summary(anovaLeft, test="Pillai", tol=0)
+#summary(anovaLeft, test="Pillai", tol=0)
+summary(anovaLeft, test="Hotelling-Lawley", tol=0)
 ```
 
 ```{r analysis-right}
