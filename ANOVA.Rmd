@@ -11,8 +11,7 @@ library(dplyr)
 library(ggplot2)
 library(broom)
 
-dataUneven<-read.csv("memriFullCorrect.csv")
-data<-read.csv("evenregions.csv")
+data<-read.csv("memriFullCorrect.csv")
 
 data<-data%>%
   filter(! is.na(Proportional.Medial_Orbital_Cortex.Volume))%>%
@@ -317,7 +316,7 @@ data$Proportional.Cochlear_Nucleus.R.Volume,
 data$Proportional.Pontine_Nucleus.R.Volume,
 data$Proportional.Reticulotegmental_Nucleus_of_Pons.R.Volume,
 data$Proportional.Olivary_Complex.R.Volume,
-data$Proportional.Pontine_Reticular_NucleusCaudal.R.Volume,
+#data$Proportional.Pontine_Reticular_NucleusCaudal.R.Volume,
 data$Proportional.Spinal_Trigeminal_Nucleus.R.Volume,
 data$Proportional.Vestibular_Nuclei.R.Volume,
 data$Proportional.Gigantocellular_Reticular_Nucleus.R.Volume,
