@@ -1,0 +1,41 @@
+---
+title: "Proportional Volume Distributions by Region (Right Hemisphere)"
+author: "Anna MacFarlane and Jasmine King"
+date: "3/2/2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+new <- read.csv("propGeno4.csv")
+
+new <- new %>% 
+  filter(! is.na(Genotype)) %>% 
+  filter(Genotype != "") %>% 
+  filter(Genotype != "HN") %>% 
+  mutate(geno = case_when(
+    Genotype == "APOE2" | Genotype == "APOE22" ~ "APOE2",
+    Genotype == "APOE3" | Genotype == "APOE33" ~ "APOE3",
+    Genotype == "APOE4" | Genotype == "APOE44" ~ "APOE4",
+    Genotype == "CVN" ~ "CVN"
+  )) %>% 
+  group_by(geno) 
+
+#view(new)
+```
+
+## Right Hemisphere Regions
+
+```{r PaS, echo = FALSE}
+ggplot(data = new, aes(factor(geno), PaS)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Parasubiculum",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(PaS ~ geno, data = new)
+summary(res.aov)
+```

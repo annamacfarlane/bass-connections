@@ -1,6 +1,6 @@
 ---
-title: "Proportional Volume Distributions by Region"
-author: "Anna MacFarlane"
+title: "Proportional Volume Distributions by Region (Left Hemisphere)"
+author: "Anna MacFarlane and Jasmine King"
 date: "11/14/2020"
 output:
   pdf_document: default
@@ -15,7 +15,8 @@ data3 <- read.csv("memriNewRegions.csv")
 cvn_data <- read.csv("CVNanalysis.csv")
 cvn2 <- read.csv("memri2_edit.csv")
 
-new <- read.csv("allGenotypes.csv")
+#new <- read.csv("allGenotypes.csv")
+new <- read.csv("propGeno4.csv")
 new <- new %>% 
   filter(! is.na(Genotype)) %>% 
   filter(Genotype != "") %>% 
@@ -31,7 +32,133 @@ new <- new %>%
 #view(new)
 ```
 
-## New File Plots
+## Left Hemisphere Regions
+
+```{r PaS, echo = FALSE}
+ggplot(data = new, aes(factor(geno), PaS)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Parasubiculum",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(PaS ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r Ect, echo = FALSE}
+ggplot(data = new, aes(factor(geno), Ect)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Ectorhinal Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(Ect ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r DTT, echo = FALSE}
+ggplot(data = new, aes(factor(geno), DTT)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Dorsal Tenia Tecta",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(DTT ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r Hc, echo = FALSE}
+ggplot(data = new, aes(factor(geno), Hc)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Hippocampus",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(Hc ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r VCl, echo = FALSE}
+ggplot(data = new, aes(factor(geno), VCl)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Ventral Claustrum",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(VCl ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r PLCo, echo = FALSE}
+ggplot(data = new, aes(factor(geno), PLCo)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Posterolateral Cortical Amygdaloid Area",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(PLCo ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r DCl, echo = FALSE}
+ggplot(data = new, aes(factor(geno), DCl)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Dorsal Claustrum",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(DCl ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r Cl, echo = FALSE}
+ggplot(data = new, aes(factor(geno), Cl)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Claustrum",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(Cl ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r VIEnt, echo = FALSE}
+ggplot(data = new, aes(factor(geno), VIEnt)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Ventral Intermediate Entorhinal Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(VIEnt ~ geno, data = new)
+summary(res.aov)
+```
 
 ```{r MEnt, echo = FALSE}
 ggplot(data = new, aes(factor(geno), MEnt)) +
