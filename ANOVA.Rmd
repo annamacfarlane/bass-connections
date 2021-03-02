@@ -359,6 +359,22 @@ data$Proportional.Ventricular_System_4thVentricle.R.Volume,
 data$Proportional.Microcellular_Tegmental_Nucleus.R.Volume)
 ```
 
+### ANOVA Graphs by Region
+
+```{r anova-region}
+col_names <- regionsLeft
+col_names <- regionsLeft[-1]
+
+for (i in col_names){
+    plot <- ggplot(df, aes_string(x=df$genotype, y=i)) +
+    geom_violin() + 
+    geom_boxplot(width = 0.1, outlier.color = "red") +
+    geom_jitter(height = 0, width = 0.3)
+    print(plot)
+}
+
+```
+
 ### MANOVA Analysis
 
 ```{r analysis-left}
