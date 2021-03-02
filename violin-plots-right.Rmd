@@ -7,7 +7,7 @@ output: pdf_document
 
 ```{r setup, include=FALSE}
 library(tidyverse)
-new <- read.csv("propGeno4.csv")
+new <- read.csv("propGeno4Right.csv")
 
 new <- new %>% 
   filter(! is.na(Genotype)) %>% 
@@ -37,5 +37,774 @@ ggplot(data = new, aes(factor(geno), PaS)) +
        subtitle = "Red points denoting outliers") 
 
 res.aov <- aov(PaS ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r Ect, echo = FALSE}
+ggplot(data = new, aes(factor(geno), Ect)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Ectorhinal Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(Ect ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r DTT, echo = FALSE}
+ggplot(data = new, aes(factor(geno), DTT)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Dorsal Tenia Tecta",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(DTT ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r Hc, echo = FALSE}
+ggplot(data = new, aes(factor(geno), Hc)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Hippocampus",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(Hc ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r VCl, echo = FALSE}
+ggplot(data = new, aes(factor(geno), VCl)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Ventral Claustrum",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(VCl ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r PLCo, echo = FALSE}
+ggplot(data = new, aes(factor(geno), PLCo)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Posterolateral Cortical Amygdaloid Area",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(PLCo ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r DCl, echo = FALSE}
+ggplot(data = new, aes(factor(geno), DCl)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Dorsal Claustrum",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(DCl ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r Cl, echo = FALSE}
+ggplot(data = new, aes(factor(geno), Cl)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Claustrum",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(Cl ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r VIEnt, echo = FALSE}
+ggplot(data = new, aes(factor(geno), VIEnt)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Ventral Intermediate Entorhinal Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(VIEnt ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r MEnt, echo = FALSE}
+ggplot(data = new, aes(factor(geno), MEnt)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Left Caudomedial Entorhinal Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(MEnt ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r DLEnt, echo = FALSE}
+ggplot(data = new, aes(factor(geno), DLEnt)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Left Dorsolateral Entorhinal Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(DLEnt ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r DIEnt, echo = FALSE}
+ggplot(data = new, aes(factor(geno), DIEnt)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Left Dorsal Intermediate Entorhinal Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(DIEnt ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r CEnt, echo = FALSE}
+ggplot(data = new, aes(factor(geno), CEnt)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Left Caudomedial Entorhinal Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(CEnt ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r VO, echo = FALSE}
+ggplot(data = new, aes(factor(geno), VO)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Left Ventral Orbital Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(VO ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r V1B, echo = FALSE}
+ggplot(data = new, aes(factor(geno), V1B)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Left Primary Visual Cortex Binocular Area",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(V1B ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r V2MM, echo = FALSE}
+ggplot(data = new, aes(factor(geno), V2MM)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Left Secondary Visual Cortex Mediomedial Area",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(V2MM ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r V2ML, echo = FALSE}
+ggplot(data = new, aes(factor(geno), V2ML)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Left Secondary Visual Cortex Mediolateral Area",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(V2ML ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r V2L, echo = FALSE}
+ggplot(data = new, aes(factor(geno), V2L)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Left Secondary Visual Cortex Lateral Area",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(V2L ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r V1M, echo = FALSE}
+ggplot(data = new, aes(factor(geno), V1M)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Left Primary Visual Cortex Monocular Area",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(V1M ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r V1B, echo = FALSE}
+ggplot(data = new, aes(factor(geno), V1B)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Left Primary Visual Cortex Binocular Area",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(V1B ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r V1, echo = FALSE}
+ggplot(data = new, aes(factor(geno), V1)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Left Primary Visual Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(V1 ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r TeA, echo = FALSE}
+ggplot(data = new, aes(factor(geno), TeA)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Left Temporal Association Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(TeA ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r S2, echo = FALSE}
+ggplot(data = new, aes(factor(geno), S2)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "Left Secondary Somatosensory Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(S2 ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r S1ULp, echo = FALSE}
+ggplot(data = new, aes(factor(geno), S1ULp)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Left Primary Somatosensory Cortex Upper Lip Region",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(S1ULp ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r S1Tr, echo = FALSE}
+ggplot(data = new, aes(factor(geno), S1Tr)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Left Primary Somatosensory Cortex Trunk Region",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(S1Tr ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r S1Sh, echo = FALSE}
+ggplot(data = new, aes(factor(geno), S1Sh)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Left Primary Somatosensory Cortex Shoulder Region",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(S1Sh ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r S1J, echo = FALSE}
+ggplot(data = new, aes(factor(geno), S1J)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Left Primary Somatosensory Cortex Jaw Region",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(S1J ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r S1HL, echo = FALSE}
+ggplot(data = new, aes(factor(geno), S1HL)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Left Primary Somatosensory Cortex Hindlimb Region",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(S1HL ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r S1FL, echo = FALSE}
+ggplot(data = new, aes(factor(geno), S1FL)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Left Primary Somatosensory Cortex Forelimb Region",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(S1FL ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r S1DZ, echo = FALSE}
+ggplot(data = new, aes(factor(geno), S1BF)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Left Primary Somatosensory Cortex Dysgranular Zone",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(S1DZ ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r S1BF, echo = FALSE}
+ggplot(data = new, aes(factor(geno), S1BF)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Left Primary Somatosensory Cortex Barrel Field",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(S1BF ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r S1, echo = FALSE}
+ggplot(data = new, aes(factor(geno), S1)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Left Primary Somatosensory Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(S1 ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r PtPR, echo = FALSE}
+ggplot(data = new, aes(factor(geno), PtPR)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Left Parietal Cortex Posterial Area Rostral Part",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(PtPR ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r MPtA, echo = FALSE}
+ggplot(data = new, aes(factor(geno), MPtA)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Left Medial Parietal Association Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(MPtA ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r MO, echo = FALSE}
+ggplot(data = new, aes(factor(geno), MO)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Left Medial Orbital Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(MO ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r M2, echo = FALSE}
+ggplot(data = new, aes(factor(geno), M2)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Left Secondary Motor Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(M2 ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r M1, echo = FALSE}
+ggplot(data = new, aes(factor(geno), M1)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Left Primary Motor Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(M1 ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r LPtA, echo = FALSE}
+ggplot(data = new, aes(factor(geno), LPtA)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Left Lateral Parietal Association Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(LPtA ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r LO, echo = FALSE}
+ggplot(data = new, aes(factor(geno), LO)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Left Lateral Orbital Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(LO ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r Ins, echo = FALSE}
+ggplot(data = new, aes(factor(geno), Ins)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Left Insular Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(Ins ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r FrA, echo = FALSE}
+ggplot(data = new, aes(factor(geno), FrA)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Left Frontal Assocation Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(FrA ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r Fr3, echo = FALSE}
+ggplot(data = new, aes(factor(geno), Fr3)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Left Frontal Cortex Area 3",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(Fr3 ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r DLO, echo = FALSE}
+ggplot(data = new, aes(factor(geno), DLO)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Left Dorsolateral Orbital Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(DLO ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r AuV, echo = FALSE}
+ggplot(data = new, aes(factor(geno), AuV)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Left Secondary Auditory Cortex Ventral Part",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(AuV ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r AuD, echo = FALSE}
+ggplot(data = new, aes(factor(geno), AuD)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Left Secondary Auditory Cortex Dorsal Part",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(AuD ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r Au1, echo = FALSE}
+ggplot(data = new, aes(factor(geno), Au1)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Left Primary Auditory Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(Au1 ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r A32, echo = FALSE}
+ggplot(data = new, aes(factor(geno), A32)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Left Cingulate Cortex Area 32",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(A32 ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r A30, echo = FALSE}
+ggplot(data = new, aes(factor(geno), A30)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Left Cingulate Cortex Area 30",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(A30 ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r A29c, echo = FALSE}
+ggplot(data = new, aes(factor(geno), A29c)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Left Cingulate Cortex Area 29c",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(A29c ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r A29b, echo = FALSE}
+ggplot(data = new, aes(factor(geno), A29b)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Left Cingulate Cortex Area 29b",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(A29b ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r A29a, echo = FALSE}
+ggplot(data = new, aes(factor(geno), A29a)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Left Cingulate Cortex Area 29a",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(A29a ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r A24bPrime, echo = FALSE}
+ggplot(data = new, aes(factor(geno), A24bPrime)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Left Cingulate Cortex Area 24b Prime",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(A24bPrime ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r A24b, echo = FALSE}
+ggplot(data = new, aes(factor(geno), A24b)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Left Cingulate Cortex Area 24b",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(A24b ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r A24aPrime, echo = FALSE}
+ggplot(data = new, aes(factor(geno), A24aPrime)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Left Cingulate Cortex Area 24a Prime",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(A24aPrime ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r A24a, echo = FALSE}
+ggplot(data = new, aes(factor(geno), A24a)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Left Cingulate Cortex Area 24a",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(A24a ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r Exterior, echo = FALSE}
+ggplot(data = new, aes(factor(geno), Exterior)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Exterior",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(Exterior ~ geno, data = new)
 summary(res.aov)
 ```

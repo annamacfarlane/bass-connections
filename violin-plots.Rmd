@@ -16,7 +16,7 @@ cvn_data <- read.csv("CVNanalysis.csv")
 cvn2 <- read.csv("memri2_edit.csv")
 
 #new <- read.csv("allGenotypes.csv")
-new <- read.csv("propGeno4.csv")
+new <- read.csv("propGeno4Left.csv")
 new <- new %>% 
   filter(! is.na(Genotype)) %>% 
   filter(Genotype != "") %>% 
