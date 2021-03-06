@@ -34,6 +34,1099 @@ new <- new %>%
 
 ## Left Hemisphere Regions
 
+```{r Iped, echo = FALSE}
+ggplot(data = new, aes(factor(geno), Iped)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Interpeduncular Nucleus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(Iped ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r Cb_1_10, echo = FALSE}
+ggplot(data = new, aes(factor(geno), Cb_1_10)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Cerebellar Cortex",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(Cb_1_10 ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r Den, echo = FALSE}
+ggplot(data = new, aes(factor(geno), Den)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Dentate (Lateral) Nucleus of Cerebellum",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(Den ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r Int, echo = FALSE}
+ggplot(data = new, aes(factor(geno), Int)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Interposed Nucleus of Cerebellum",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(Int ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r FasDL, echo = FALSE}
+ggplot(data = new, aes(factor(geno), FasDL)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Fastigial Medial Dorsolateral Nucleus of Cerebellum",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(FasDL ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r FasMed, echo = FALSE}
+ggplot(data = new, aes(factor(geno), FasMed)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Fastigial Medial Nucleus of Cerebellum",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(FasMed ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r VII, echo = FALSE}
+ggplot(data = new, aes(factor(geno), VII)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Ventral Lateral Lemniscus Nucleus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(VII ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r ParB, echo = FALSE}
+ggplot(data = new, aes(factor(geno), ParB)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Parabrachial Nucleus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(ParB ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r KF, echo = FALSE}
+ggplot(data = new, aes(factor(geno), KF)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Parabrachial Medial Nucleus and Koelliker Fuse Nucleus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(KF ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r PCRt, echo = FALSE}
+ggplot(data = new, aes(factor(geno), PCRt)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Parvicellular Reticular Nucleus and Principal Sensory Trigeminal Nucleus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(PCRt ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r CG, echo = FALSE}
+ggplot(data = new, aes(factor(geno), CG)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Central Gray",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(CG ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r Su5, echo = FALSE}
+ggplot(data = new, aes(factor(geno), Su5)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Pedunculotegmental Medial Paralemniscial and Supratrigemnial Nuclei",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(Su5 ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r m5, echo = FALSE}
+ggplot(data = new, aes(factor(geno), m5)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Motor Root of Trigeminal Nerve",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(m5 ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r 5N, echo = FALSE}
+ggplot(data = new, aes(factor(geno), `5N`)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Trigeminal Motor Nucleus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(`5N` ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r PnC, echo = FALSE}
+ggplot(data = new, aes(factor(geno), PnC)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Pontine Reticular Nucleus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(PnC ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r Raph, echo = FALSE}
+ggplot(data = new, aes(factor(geno), Raph)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Raphe Nucleus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(Raph ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r Pr5, echo = FALSE}
+ggplot(data = new, aes(factor(geno), Pr5)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Trigeminal Sensory Nucleus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(Pr5 ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r DTg, echo = FALSE}
+ggplot(data = new, aes(factor(geno), DTg)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Dorsal Tegmentum",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(DTg ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r Tg, echo = FALSE}
+ggplot(data = new, aes(factor(geno), Tg)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Tegmental Nucleus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(Tg ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r PRh, echo = FALSE}
+ggplot(data = new, aes(factor(geno), PRh)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Perirhinal Cortex",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(PRh ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r CoN, echo = FALSE}
+ggplot(data = new, aes(factor(geno), CoN)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Cochlear Nucleus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(CoN ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r Pn, echo = FALSE}
+ggplot(data = new, aes(factor(geno), Pn)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Pontine Nucleus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(Pn ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r RTg, echo = FALSE}
+ggplot(data = new, aes(factor(geno), RTg)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Reticulotegmental Nucleus of Pons",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(RTg ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r Oliv, echo = FALSE}
+ggplot(data = new, aes(factor(geno), Oliv)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Olivary Complex",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(Oliv ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r PnRt, echo = FALSE}
+ggplot(data = new, aes(factor(geno), PnRt)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Pontine Reticular Nucleus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(PnRt ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r Sp5, echo = FALSE}
+ggplot(data = new, aes(factor(geno), Sp5)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Spinal Trigeminal Nucleus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(Sp5 ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r Ve, echo = FALSE}
+ggplot(data = new, aes(factor(geno), Ve)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Vestibular Nuclei",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(Ve ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r Gi, echo = FALSE}
+ggplot(data = new, aes(factor(geno), Gi)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Gigantocellular Reticular Nucleus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(Gi ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r Cu, echo = FALSE}
+ggplot(data = new, aes(factor(geno), Cu)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Cuneate Nucleus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(Cu ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r ac, echo = FALSE}
+ggplot(data = new, aes(factor(geno), ac)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Anterior Commisure",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(ac ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r ot, echo = FALSE}
+ggplot(data = new, aes(factor(geno), ot)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Optic Tracts",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(ot ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r fi, echo = FALSE}
+ggplot(data = new, aes(factor(geno), fi)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Fimbria",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(fi ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r cc, echo = FALSE}
+ggplot(data = new, aes(factor(geno), cc)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Corpus Callosum",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(cc ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r fx, echo = FALSE}
+ggplot(data = new, aes(factor(geno), fx)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Fornix",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(fx ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r st, echo = FALSE}
+ggplot(data = new, aes(factor(geno), st)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Stria Terminalis",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(st ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r cg, echo = FALSE}
+ggplot(data = new, aes(factor(geno), cg)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Cingulum",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(cg ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r lo, echo = FALSE}
+ggplot(data = new, aes(factor(geno), lo)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Lateral Olfactory Tract",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(lo ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r vhc, echo = FALSE}
+ggplot(data = new, aes(factor(geno), vhc)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Ventral Hippocampal Commissure",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(vhc ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r ic, echo = FALSE}
+ggplot(data = new, aes(factor(geno), ic)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Internal Capsule",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(ic ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r fr, echo = FALSE}
+ggplot(data = new, aes(factor(geno), fr)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Fasciculus Retroflexus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(fr ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r sm, echo = FALSE}
+ggplot(data = new, aes(factor(geno), sm)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Stria Medularis",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(sm ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r mt, echo = FALSE}
+ggplot(data = new, aes(factor(geno), mt)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Mammillothalamic Tract",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(mt ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r pc, echo = FALSE}
+ggplot(data = new, aes(factor(geno), pc)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Posterior Commissure",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(pc ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r bsc, echo = FALSE}
+ggplot(data = new, aes(factor(geno), bsc)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Brachium of Superior Colliculus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(bsc ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r cp, echo = FALSE}
+ggplot(data = new, aes(factor(geno), cp)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Cerebral Peduncle",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(cp ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r ll, echo = FALSE}
+ggplot(data = new, aes(factor(geno), ll)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Lateral Lemniscus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(ll ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r sp5, echo = FALSE}
+ggplot(data = new, aes(factor(geno), sp5)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Spinal Trigeminal Nerve",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(sp5 ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r py, echo = FALSE}
+ggplot(data = new, aes(factor(geno), py)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Pyramidal Tract",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(py ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r n8, echo = FALSE}
+ggplot(data = new, aes(factor(geno), n8)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Vestibulocochlear Nerve",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(n8 ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r n7, echo = FALSE}
+ggplot(data = new, aes(factor(geno), n7)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Facial Nerve",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(n7 ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r lfp, echo = FALSE}
+ggplot(data = new, aes(factor(geno), lfp)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Longitudinal Fasciculus of Pons",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(lfp ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r mlf_ts, echo = FALSE}
+ggplot(data = new, aes(factor(geno), mlf_ts)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Medial Longitudinal Fasciculus and Tectospinal Tract",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(mlf_ts ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r sc, echo = FALSE}
+ggplot(data = new, aes(factor(geno), sc)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Spinocerebellar Tract",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(sc ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r ml, echo = FALSE}
+ggplot(data = new, aes(factor(geno), ml)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Medial Lemniscus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(ml ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r vsc, echo = FALSE}
+ggplot(data = new, aes(factor(geno), vsc)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Ventral Spinocerebellar Tract",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(vsc ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r mcp, echo = FALSE}
+ggplot(data = new, aes(factor(geno), mcp)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Middle Cerebellar Peduncle",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(mcp ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r scp, echo = FALSE}
+ggplot(data = new, aes(factor(geno), scp)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Superior Cerebellar Peduncle",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(scp ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r icp_oc_tz, echo = FALSE}
+ggplot(data = new, aes(factor(geno), icp_oc_tz)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Inferior Cerebellar Peduncle",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(icp_oc_tz ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r cbw, echo = FALSE}
+ggplot(data = new, aes(factor(geno), cbw)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Cerebellar White Matter",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(cbw ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r LV, echo = FALSE}
+ggplot(data = new, aes(factor(geno), LV)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Lateral Ventricle",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(LV ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r A25, echo = FALSE}
+ggplot(data = new, aes(factor(geno), A25)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Cingulate Cortex Area 25",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(A25 ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r das, echo = FALSE}
+ggplot(data = new, aes(factor(geno), das)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Dorsal Acustic Stria",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(das ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r Post, echo = FALSE}
+ggplot(data = new, aes(factor(geno), Post)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Postsubiculum",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(Post ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r 4V, echo = FALSE}
+ggplot(data = new, aes(factor(geno), 4V)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Ventricular System 4th Ventricle",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(4V ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r MiTg, echo = FALSE}
+ggplot(data = new, aes(factor(geno), MiTg)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Microcellular Tegmental Nucleus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(MiTg ~ geno, data = new)
+summary(res.aov)
+```
+
+``{r APT, echo = FALSE}
+ggplot(data = new, aes(factor(geno), APT)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Pretectal Nucleus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(APT ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r LDVL, echo = FALSE}
+ggplot(data = new, aes(factor(geno), LDVL)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Latero Dorsal Thalamic Nucleus Ventro Lateral",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(LDVL ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r LP, echo = FALSE}
+ggplot(data = new, aes(factor(geno), LP)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Latero Posterior Nuclei of Thalamus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(LP ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r AThal, echo = FALSE}
+ggplot(data = new, aes(factor(geno), AThal)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Anterior Thalamic Nuclei",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(Athal ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r RMC, echo = FALSE}
+ggplot(data = new, aes(factor(geno), RMC)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Red Nucleus Magnocellular",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(RMC ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r PaR, echo = FALSE}
+ggplot(data = new, aes(factor(geno), PaR)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Pararubral Nucleus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(PaR ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r RR, echo = FALSE}
+ggplot(data = new, aes(factor(geno), RR)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Retro Rubral Fluid",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(RR ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r CSF, echo = FALSE}
+ggplot(data = new, aes(factor(geno), CSF)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Cerebrospinal Fluid",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(CSF ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r IRN, echo = FALSE}
+ggplot(data = new, aes(factor(geno), IRN)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Intermediate Reticular Nucleus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(IRN ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r PHD_PaMP_Post_and_LatHy, echo = FALSE}
+ggplot(data = new, aes(factor(geno), PHD_PaMP_Post_and_LatHy)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Posterior Dorsal Paraventricular Medial Parvicellular Posterior Lateral Hypothalamus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(PHD_PaMP_Post_and_LatHy ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r PR_p3Tg_L, echo = FALSE}
+ggplot(data = new, aes(factor(geno), PR_p3Tg_L)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Prerubral Forel",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(PR_p3Tg_L ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r PVG, echo = FALSE}
+ggplot(data = new, aes(factor(geno), PVG)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "PVG of Hypothalamus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(PVG ~ geno, data = new)
+summary(res.aov)
+```
+
+```{r BLA, echo = FALSE}
+ggplot(data = new, aes(factor(geno), BLA)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Basal Lateral Amygdala",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(BLA ~ geno, data = new)
+summary(res.aov)
+```
+
+
 ```{r BS_R, echo = FALSE}
 ggplot(data = new, aes(factor(geno), BS_R)) +
   geom_violin() +
