@@ -15,7 +15,7 @@ data3 <- read.csv("memriNewRegions.csv")
 cvn_data <- read.csv("CVNanalysis.csv")
 cvn2 <- read.csv("memri2_edit.csv")
 
-#new <- read.csv("allGenotypes.csv")
+all <- read.csv("allGenotypes.csv")
 new <- read.csv("propGeno4Left.csv")
 new <- new %>% 
   filter(! is.na(Genotype)) %>% 
@@ -29,7 +29,17 @@ new <- new %>%
   )) %>% 
   group_by(geno) 
 
-#view(new)
+corrLeft <- read.csv("corrLeft.csv")
+
+#view(all)
+```
+
+165 regions
+
+## Adjusted p-values for multiple comparisons
+
+```{r corrections, echo = FALSE}
+p.adjust(corrLeft$pval, method = "holm", n = 165)
 ```
 
 ## Left Hemisphere Regions
@@ -38,7 +48,7 @@ new <- new %>%
 ggplot(data = new, aes(factor(geno), Iped)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Interpeduncular Nucleus",
@@ -46,13 +56,29 @@ ggplot(data = new, aes(factor(geno), Iped)) +
  
 res.aov <- aov(Iped ~ geno, data = new)
 summary(res.aov)
+
+```
+
+```{r Iped, echo = FALSE}
+ggplot(data = new, aes(factor(geno), Iped)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Interpeduncular Nucleus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(Iped ~ geno, data = new)
+summary(res.aov)
+
 ```
 
 ```{r Cb_1_10, echo = FALSE}
 ggplot(data = new, aes(factor(geno), Cb_1_10)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Cerebellar Cortex",
@@ -66,7 +92,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), Den)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Dentate (Lateral) Nucleus of Cerebellum",
@@ -80,7 +106,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), Int)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Interposed Nucleus of Cerebellum",
@@ -94,7 +120,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), FasDL)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Fastigial Medial Dorsolateral Nucleus of Cerebellum",
@@ -108,7 +134,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), FasMed)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Fastigial Medial Nucleus of Cerebellum",
@@ -118,25 +144,25 @@ res.aov <- aov(FasMed ~ geno, data = new)
 summary(res.aov)
 ```
 
-```{r VII, echo = FALSE}
-ggplot(data = new, aes(factor(geno), VII)) +
-  geom_violin() +
-  geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
-  labs(x = "Genotype",
-   	y = "",
-   	title = "Ventral Lateral Lemniscus Nucleus",
-   	subtitle = "Red points denoting outliers")
+#```{r VII, echo = FALSE}
+#ggplot(data = new, aes(factor(geno), VII)) +
+  #geom_violin() +
+  #geom_boxplot(width = 0.1, outlier.color = "red") +
+  #geom_jitter(height = 0, width = 0.3) +
+  #labs(x = "Genotype",
+   	#y = "",
+   	#title = "Ventral Lateral Lemniscus Nucleus",
+   	#subtitle = "Red points denoting outliers")
  
-res.aov <- aov(VII ~ geno, data = new)
-summary(res.aov)
-```
+#res.aov <- aov(VII ~ geno, data = new)
+#summary(res.aov)
+#```
 
 ```{r ParB, echo = FALSE}
 ggplot(data = new, aes(factor(geno), ParB)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Parabrachial Nucleus",
@@ -150,7 +176,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), KF)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Parabrachial Medial Nucleus and Koelliker Fuse Nucleus",
@@ -164,7 +190,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), PCRt)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Parvicellular Reticular Nucleus and Principal Sensory Trigeminal Nucleus",
@@ -178,7 +204,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), CG)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Central Gray",
@@ -192,7 +218,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), Su5)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Pedunculotegmental Medial Paralemniscial and Supratrigemnial Nuclei",
@@ -206,7 +232,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), m5)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Motor Root of Trigeminal Nerve",
@@ -216,17 +242,17 @@ res.aov <- aov(m5 ~ geno, data = new)
 summary(res.aov)
 ```
 
-```{r 5N, echo = FALSE}
-ggplot(data = new, aes(factor(geno), `5N`)) +
+```{r n5N, echo = FALSE}
+ggplot(data = new, aes(factor(geno), n5N)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Trigeminal Motor Nucleus",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(`5N` ~ geno, data = new)
+res.aov <- aov(n5N ~ geno, data = new)
 summary(res.aov)
 ```
 
@@ -234,7 +260,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), PnC)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Pontine Reticular Nucleus",
@@ -248,7 +274,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), Raph)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Raphe Nucleus",
@@ -262,7 +288,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), Pr5)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Trigeminal Sensory Nucleus",
@@ -276,7 +302,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), DTg)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Dorsal Tegmentum",
@@ -290,7 +316,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), Tg)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Tegmental Nucleus",
@@ -300,25 +326,11 @@ res.aov <- aov(Tg ~ geno, data = new)
 summary(res.aov)
 ```
 
-```{r PRh, echo = FALSE}
-ggplot(data = new, aes(factor(geno), PRh)) +
-  geom_violin() +
-  geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
-  labs(x = "Genotype",
-   	y = "",
-   	title = "Perirhinal Cortex",
-   	subtitle = "Red points denoting outliers")
- 
-res.aov <- aov(PRh ~ geno, data = new)
-summary(res.aov)
-```
-
 ```{r CoN, echo = FALSE}
 ggplot(data = new, aes(factor(geno), CoN)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Cochlear Nucleus",
@@ -332,7 +344,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), Pn)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Pontine Nucleus",
@@ -346,7 +358,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), RTg)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Reticulotegmental Nucleus of Pons",
@@ -360,7 +372,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), Oliv)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Olivary Complex",
@@ -370,25 +382,25 @@ res.aov <- aov(Oliv ~ geno, data = new)
 summary(res.aov)
 ```
 
-```{r PnRt, echo = FALSE}
-ggplot(data = new, aes(factor(geno), PnRt)) +
-  geom_violin() +
-  geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
-  labs(x = "Genotype",
-   	y = "",
-   	title = "Pontine Reticular Nucleus",
-   	subtitle = "Red points denoting outliers")
+#```{r PnRt, echo = FALSE}
+#ggplot(data = new, aes(factor(geno), PnRt)) +
+#  geom_violin() +
+#  geom_boxplot(width = 0.1, outlier.color = "red") +
+#  geom_jitter(height = 0, width = 0.3) +
+#  labs(x = "Genotype",
+#   	y = "",
+#   	title = "Pontine Reticular Nucleus",
+#   	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(PnRt ~ geno, data = new)
-summary(res.aov)
-```
+#res.aov <- aov(PnRt ~ geno, data = new)
+#summary(res.aov)
+#```
 
 ```{r Sp5, echo = FALSE}
 ggplot(data = new, aes(factor(geno), Sp5)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Spinal Trigeminal Nucleus",
@@ -402,7 +414,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), Ve)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Vestibular Nuclei",
@@ -416,7 +428,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), Gi)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Gigantocellular Reticular Nucleus",
@@ -430,7 +442,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), Cu)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Cuneate Nucleus",
@@ -444,7 +456,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), ac)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Anterior Commisure",
@@ -458,7 +470,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), ot)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Optic Tracts",
@@ -472,7 +484,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), fi)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Fimbria",
@@ -486,7 +498,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), cc)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Corpus Callosum",
@@ -500,7 +512,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), fx)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Fornix",
@@ -514,7 +526,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), st)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Stria Terminalis",
@@ -528,7 +540,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), cg)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Cingulum",
@@ -542,7 +554,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), lo)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Lateral Olfactory Tract",
@@ -556,7 +568,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), vhc)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Ventral Hippocampal Commissure",
@@ -570,7 +582,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), ic)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Internal Capsule",
@@ -584,7 +596,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), fr)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Fasciculus Retroflexus",
@@ -598,7 +610,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), sm)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Stria Medularis",
@@ -612,7 +624,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), mt)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Mammillothalamic Tract",
@@ -626,7 +638,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), pc)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Posterior Commissure",
@@ -640,7 +652,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), bsc)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Brachium of Superior Colliculus",
@@ -654,7 +666,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), cp)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Cerebral Peduncle",
@@ -668,7 +680,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), ll)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Lateral Lemniscus",
@@ -682,7 +694,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), sp5)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Spinal Trigeminal Nerve",
@@ -696,7 +708,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), py)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Pyramidal Tract",
@@ -710,7 +722,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), n8)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Vestibulocochlear Nerve",
@@ -724,7 +736,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), n7)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Facial Nerve",
@@ -738,7 +750,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), lfp)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Longitudinal Fasciculus of Pons",
@@ -752,7 +764,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), mlf_ts)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Medial Longitudinal Fasciculus and Tectospinal Tract",
@@ -766,7 +778,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), sc)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Spinocerebellar Tract",
@@ -780,7 +792,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), ml)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Medial Lemniscus",
@@ -794,7 +806,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), vsc)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Ventral Spinocerebellar Tract",
@@ -808,7 +820,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), mcp)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Middle Cerebellar Peduncle",
@@ -822,7 +834,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), scp)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Superior Cerebellar Peduncle",
@@ -836,7 +848,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), icp_oc_tz)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Inferior Cerebellar Peduncle",
@@ -850,7 +862,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), cbw)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Cerebellar White Matter",
@@ -864,7 +876,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), LV)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Lateral Ventricle",
@@ -878,7 +890,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), A25)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Cingulate Cortex Area 25",
@@ -892,7 +904,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), das)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Dorsal Acustic Stria",
@@ -906,7 +918,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), Post)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Postsubiculum",
@@ -916,17 +928,17 @@ res.aov <- aov(Post ~ geno, data = new)
 summary(res.aov)
 ```
 
-```{r 4V, echo = FALSE}
-ggplot(data = new, aes(factor(geno), 4V)) +
+```{r v4V, echo = FALSE}
+ggplot(data = new, aes(factor(geno), v4V)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Ventricular System 4th Ventricle",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(4V ~ geno, data = new)
+res.aov <- aov(v4V ~ geno, data = new)
 summary(res.aov)
 ```
 
@@ -934,7 +946,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), MiTg)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Microcellular Tegmental Nucleus",
@@ -944,17 +956,17 @@ res.aov <- aov(MiTg ~ geno, data = new)
 summary(res.aov)
 ```
 
-``{r APT, echo = FALSE}
-ggplot(data = new, aes(factor(geno), APT)) +
+```{r PT, echo = FALSE}
+ggplot(data = new, aes(factor(geno), PT)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Pretectal Nucleus",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(APT ~ geno, data = new)
+res.aov <- aov(PT ~ geno, data = new)
 summary(res.aov)
 ```
 
@@ -962,7 +974,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), LDVL)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Latero Dorsal Thalamic Nucleus Ventro Lateral",
@@ -976,7 +988,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), LP)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Latero Posterior Nuclei of Thalamus",
@@ -986,11 +998,11 @@ res.aov <- aov(LP ~ geno, data = new)
 summary(res.aov)
 ```
 
-```{r AThal, echo = FALSE}
-ggplot(data = new, aes(factor(geno), AThal)) +
+```{r Athal, echo = FALSE}
+ggplot(data = new, aes(factor(geno), Athal)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Anterior Thalamic Nuclei",
@@ -1004,7 +1016,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), RMC)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Red Nucleus Magnocellular",
@@ -1018,7 +1030,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), PaR)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Pararubral Nucleus",
@@ -1032,7 +1044,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), RR)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Retro Rubral Fluid",
@@ -1046,7 +1058,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), CSF)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Cerebrospinal Fluid",
@@ -1060,7 +1072,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), IRN)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Intermediate Reticular Nucleus",
@@ -1074,7 +1086,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), PHD_PaMP_Post_and_LatHy)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Posterior Dorsal Paraventricular Medial Parvicellular Posterior Lateral Hypothalamus",
@@ -1088,7 +1100,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), PR_p3Tg_L)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Prerubral Forel",
@@ -1102,7 +1114,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), PVG)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "PVG of Hypothalamus",
@@ -1116,7 +1128,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), BLA)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
    	y = "",
    	title = "Basal Lateral Amygdala",
@@ -1131,7 +1143,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), BS_R)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Brain Stem Rest",
@@ -1145,7 +1157,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), PrCn)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Precuneiform Nucleus",
@@ -1159,7 +1171,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), Cn)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Cuneiform Nucleus",
@@ -1173,7 +1185,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), RI)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Midbrain Linear Nucleus",
@@ -1187,7 +1199,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), MRN)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Midbrain Reticular Nucleus",
@@ -1201,7 +1213,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), RPC)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Red Nucleus Parvicellular",
@@ -1215,7 +1227,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), SN)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Substania Nigra",
@@ -1229,7 +1241,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), IC)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Inferior Colliculus",
@@ -1243,7 +1255,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), SC)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Superior Colliculus",
@@ -1257,7 +1269,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), DpMe)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Deep Mesencephalic Nuclei",
@@ -1271,7 +1283,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), Sub_PP)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Subbrachial Nucleus and Peripeduncular Nucleus",
@@ -1285,7 +1297,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), RTN)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Reticular Nucleus of Thalamus",
@@ -1299,7 +1311,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), ZI)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Zona Incerta",
@@ -1313,7 +1325,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), LGN)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Lateral Geniculate Nucleus",
@@ -1327,7 +1339,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), MGN)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Medial Geniculate Nucleus",
@@ -1341,7 +1353,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), LDNT)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Latero Dorsal Nucleus of Thalamus",
@@ -1355,7 +1367,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), VT)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Ventral Thalamic Nuclei",
@@ -1369,7 +1381,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), Thal_R)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Thalamus Rest",
@@ -1383,7 +1395,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), VTA)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Ventral Tegmental Area",
@@ -1393,11 +1405,12 @@ res.aov <- aov(VTA ~ geno, data = new)
 summary(res.aov)
 ```
 
+
 ```{r APT, echo = FALSE}
 ggplot(data = new, aes(factor(geno), APT)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Anterior Pretectal Nucleus",
@@ -1407,11 +1420,12 @@ res.aov <- aov(APT ~ geno, data = new)
 summary(res.aov)
 ```
 
+
 ```{r PAG, echo = FALSE}
 ggplot(data = new, aes(factor(geno), PAG)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Periaquaductal Grey",
@@ -1425,7 +1439,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), Vpal)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Ventral Pallidum",
@@ -1439,7 +1453,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), BNst)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Bed Nucleus of the Stria Terminalis",
@@ -1453,7 +1467,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), Acb)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Acumbens",
@@ -1467,7 +1481,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), Amy)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Amygdala",
@@ -1481,7 +1495,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), CPu)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Striatum",
@@ -1495,7 +1509,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), GP)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Globus Pallidus",
@@ -1509,7 +1523,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), SPT)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Septum",
@@ -1523,7 +1537,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), Sthal)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Subthalamic Nucleus",
@@ -1537,7 +1551,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), Preopt)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Preoptic Telencephalon",
@@ -1551,7 +1565,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), Hyp)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Hypothalamus",
@@ -1565,7 +1579,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), APir)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Amygdalopiriform Transition Area",
@@ -1579,7 +1593,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), Pir)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Periform Cortex",
@@ -1593,7 +1607,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), PrS)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Presubiculum",
@@ -1607,7 +1621,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), PRh)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Perirhinal Cortex",
@@ -1621,7 +1635,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), PaS)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Parasubiculum",
@@ -1635,7 +1649,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), Ect)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Ectorhinal Cortex",
@@ -1649,7 +1663,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), DTT)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Dorsal Tenia Tecta",
@@ -1663,7 +1677,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), Hc)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Hippocampus",
@@ -1677,7 +1691,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), VCl)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Ventral Claustrum",
@@ -1691,7 +1705,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), PLCo)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Posterolateral Cortical Amygdaloid Area",
@@ -1705,7 +1719,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), DCl)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Dorsal Claustrum",
@@ -1719,7 +1733,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), Cl)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Claustrum",
@@ -1733,7 +1747,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), VIEnt)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Ventral Intermediate Entorhinal Cortex",
@@ -1747,7 +1761,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), MEnt)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Left Caudomedial Entorhinal Cortex",
@@ -1761,7 +1775,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), DLEnt)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Left Dorsolateral Entorhinal Cortex",
@@ -1775,7 +1789,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), DIEnt)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Left Dorsal Intermediate Entorhinal Cortex",
@@ -1789,7 +1803,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), CEnt)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Left Caudomedial Entorhinal Cortex",
@@ -1803,7 +1817,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), VO)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Left Ventral Orbital Cortex",
@@ -1813,25 +1827,12 @@ res.aov <- aov(VO ~ geno, data = new)
 summary(res.aov)
 ```
 
-```{r V1B, echo = FALSE}
-ggplot(data = new, aes(factor(geno), V1B)) +
-  geom_violin() +
-  geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
-  labs(x = "Genotype",
-       y = "",
-       title = "Left Primary Visual Cortex Binocular Area",
-       subtitle = "Red points denoting outliers") 
-
-res.aov <- aov(V1B ~ geno, data = new)
-summary(res.aov)
-```
 
 ```{r V2MM, echo = FALSE}
 ggplot(data = new, aes(factor(geno), V2MM)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Left Secondary Visual Cortex Mediomedial Area",
@@ -1845,7 +1846,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), V2ML)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Left Secondary Visual Cortex Mediolateral Area",
@@ -1859,7 +1860,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), V2L)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Left Secondary Visual Cortex Lateral Area",
@@ -1873,7 +1874,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), V1M)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Left Primary Visual Cortex Monocular Area",
@@ -1887,7 +1888,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), V1B)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Left Primary Visual Cortex Binocular Area",
@@ -1901,7 +1902,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), V1)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Left Primary Visual Cortex",
@@ -1915,7 +1916,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), TeA)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Left Temporal Association Cortex",
@@ -1929,7 +1930,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), S2)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "Left Secondary Somatosensory Cortex",
        subtitle = "Red points denoting outliers") 
@@ -1942,7 +1943,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), S1ULp)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Left Primary Somatosensory Cortex Upper Lip Region",
@@ -1956,7 +1957,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), S1Tr)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Left Primary Somatosensory Cortex Trunk Region",
@@ -1970,7 +1971,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), S1Sh)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Left Primary Somatosensory Cortex Shoulder Region",
@@ -1984,7 +1985,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), S1J)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Left Primary Somatosensory Cortex Jaw Region",
@@ -1998,7 +1999,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), S1HL)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Left Primary Somatosensory Cortex Hindlimb Region",
@@ -2012,7 +2013,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), S1FL)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Left Primary Somatosensory Cortex Forelimb Region",
@@ -2026,7 +2027,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), S1BF)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Left Primary Somatosensory Cortex Dysgranular Zone",
@@ -2040,7 +2041,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), S1BF)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Left Primary Somatosensory Cortex Barrel Field",
@@ -2054,7 +2055,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), S1)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Left Primary Somatosensory Cortex",
@@ -2068,7 +2069,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), PtPR)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Left Parietal Cortex Posterial Area Rostral Part",
@@ -2082,7 +2083,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), MPtA)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Left Medial Parietal Association Cortex",
@@ -2096,7 +2097,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), MO)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Left Medial Orbital Cortex",
@@ -2110,7 +2111,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), M2)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Left Secondary Motor Cortex",
@@ -2124,7 +2125,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), M1)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Left Primary Motor Cortex",
@@ -2138,7 +2139,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), LPtA)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Left Lateral Parietal Association Cortex",
@@ -2152,7 +2153,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), LO)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Left Lateral Orbital Cortex",
@@ -2166,7 +2167,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), Ins)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Left Insular Cortex",
@@ -2180,7 +2181,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), FrA)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Left Frontal Assocation Cortex",
@@ -2194,7 +2195,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), Fr3)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Left Frontal Cortex Area 3",
@@ -2208,7 +2209,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), DLO)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Left Dorsolateral Orbital Cortex",
@@ -2222,7 +2223,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), AuV)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Left Secondary Auditory Cortex Ventral Part",
@@ -2236,7 +2237,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), AuD)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Left Secondary Auditory Cortex Dorsal Part",
@@ -2250,7 +2251,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), Au1)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Left Primary Auditory Cortex",
@@ -2264,7 +2265,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), A32)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Left Cingulate Cortex Area 32",
@@ -2278,7 +2279,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), A30)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Left Cingulate Cortex Area 30",
@@ -2292,7 +2293,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), A29c)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Left Cingulate Cortex Area 29c",
@@ -2306,7 +2307,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), A29b)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Left Cingulate Cortex Area 29b",
@@ -2320,7 +2321,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), A29a)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Left Cingulate Cortex Area 29a",
@@ -2334,7 +2335,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), A24bPrime)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Left Cingulate Cortex Area 24b Prime",
@@ -2348,7 +2349,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), A24b)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Left Cingulate Cortex Area 24b",
@@ -2362,7 +2363,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), A24aPrime)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Left Cingulate Cortex Area 24a Prime",
@@ -2376,7 +2377,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), A24a)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Left Cingulate Cortex Area 24a",
@@ -2390,7 +2391,7 @@ summary(res.aov)
 ggplot(data = new, aes(factor(geno), Exterior)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
-  geom_jitter(height = 0, width = 0.3) +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
        title = "Exterior",
