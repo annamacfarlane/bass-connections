@@ -1,0 +1,23 @@
+---
+title: "Adjusted p-values for multiple comparisons"
+author: "Anna MacFarlane"
+date: "3/16/2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+
+corrLeft <- read.csv("corrLeft.csv")
+corrRight <- read.csv("corrRight.csv")
+```
+
+## Left Hemisphere
+```{r corrections-left, echo = FALSE}
+p.adjust(corrLeft$pval, method = "fdr", n = 165)
+```
+
+## Right Hemisphere
+```{r corrections-right, echo = FALSE}
+p.adjust(corrRight$pval, method = "fdr", n = 163)
+```

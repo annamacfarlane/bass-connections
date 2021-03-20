@@ -8,6 +8,7 @@ output: pdf_document
 ```{r setup, include=FALSE}
 library(tidyverse)
 new <- read.csv("propGeno4Right.csv")
+corrRight <- read.csv("corrRight.csv")
 
 new <- new %>% 
   filter(! is.na(Genotype)) %>% 
@@ -21,11 +22,14 @@ new <- new %>%
   )) %>% 
   group_by(geno) 
 
-view(new)
+#view(new)
 ```
 
+## Adjusted p-values for multiple comparisons
+```{r corrections, echo = FALSE}
+p.adjust(corrRight$pval, method = "fdr", n = 163)
+```
 ## Right Hemisphere Regions
-
 
 ```{r Iped, echo = FALSE}
 ggplot(data = new, aes(factor(geno), Iped)) +

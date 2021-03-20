@@ -39,7 +39,7 @@ corrLeft <- read.csv("corrLeft.csv")
 ## Adjusted p-values for multiple comparisons
 
 ```{r corrections, echo = FALSE}
-p.adjust(corrLeft$pval, method = "holm", n = 165)
+p.adjust(corrLeft$pval, method = "fdr", n = 165)
 ```
 
 ## Left Hemisphere Regions
