@@ -32,7 +32,7 @@ ggplot(data = apoe4, aes(factor(Sex), Iped)) +
    	title = "Interpeduncular Nucleus: apoe4",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(Iped ~ geno, data = apoe4)
+res.aov <- aov(Iped ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -46,7 +46,7 @@ ggplot(data = apoe4, aes(factor(Sex), Cb_1_10)) +
    	title = "Cerebellar Cortex",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(Cb_1_10 ~ geno, data = apoe4)
+res.aov <- aov(Cb_1_10 ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -60,7 +60,7 @@ ggplot(data = apoe4, aes(factor(Sex), Den)) +
    	title = "Dentate (Lateral) Nucleus of Cerebellum",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(Den ~ geno, data = apoe4)
+res.aov <- aov(Den ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -74,7 +74,7 @@ ggplot(data = apoe4, aes(factor(Sex), Int)) +
    	title = "Interposed Nucleus of Cerebellum",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(Int ~ geno, data = apoe4)
+res.aov <- aov(Int ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -88,7 +88,7 @@ ggplot(data = apoe4, aes(factor(Sex), FasDL)) +
    	title = "Fastigial Medial Dorsolateral Nucleus of Cerebellum",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(FasDL ~ geno, data = apoe4)
+res.aov <- aov(FasDL ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -102,7 +102,7 @@ ggplot(data = apoe4, aes(factor(Sex), FasMed)) +
    	title = "Fastigial Medial Nucleus of Cerebellum",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(FasMed ~ geno, data = apoe4)
+res.aov <- aov(FasMed ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -116,7 +116,7 @@ summary(res.aov)
    	#title = "Ventral Lateral Lemniscus Nucleus",
    	#subtitle = "Red points denoting outliers")
  
-#res.aov <- aov(VII ~ geno, data = apoe4)
+#res.aov <- aov(VII ~ Sex, data = apoe4)
 #summary(res.aov)
 #```
 
@@ -130,7 +130,7 @@ ggplot(data = apoe4, aes(factor(Sex), ParB)) +
    	title = "Parabrachial Nucleus",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(ParB ~ geno, data = apoe4)
+res.aov <- aov(ParB ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -144,7 +144,7 @@ ggplot(data = apoe4, aes(factor(Sex), KF)) +
    	title = "Parabrachial Medial Nucleus and Koelliker Fuse Nucleus",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(KF ~ geno, data = apoe4)
+res.aov <- aov(KF ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -158,7 +158,7 @@ ggplot(data = apoe4, aes(factor(Sex), PCRt)) +
    	title = "Parvicellular Reticular Nucleus and Principal Sensory Trigeminal Nucleus",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(PCRt ~ geno, data = apoe4)
+res.aov <- aov(PCRt ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -172,7 +172,7 @@ ggplot(data = apoe4, aes(factor(Sex), CG)) +
    	title = "Central Gray",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(CG ~ geno, data = apoe4)
+res.aov <- aov(CG ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -186,7 +186,7 @@ ggplot(data = apoe4, aes(factor(Sex), Su5)) +
    	title = "Pedunculotegmental Medial Paralemniscial and Supratrigemnial Nuclei",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(Su5 ~ geno, data = apoe4)
+res.aov <- aov(Su5 ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -200,7 +200,7 @@ ggplot(data = apoe4, aes(factor(Sex), m5)) +
    	title = "Motor Root of Trigeminal Nerve",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(m5 ~ geno, data = apoe4)
+res.aov <- aov(m5 ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -214,7 +214,7 @@ ggplot(data = apoe4, aes(factor(Sex), n5N)) +
    	title = "Trigeminal Motor Nucleus",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(n5N ~ geno, data = apoe4)
+res.aov <- aov(n5N ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -228,7 +228,7 @@ ggplot(data = apoe4, aes(factor(Sex), PnC)) +
    	title = "Pontine Reticular Nucleus",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(PnC ~ geno, data = apoe4)
+res.aov <- aov(PnC ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -242,7 +242,7 @@ ggplot(data = apoe4, aes(factor(Sex), Raph)) +
    	title = "Raphe Nucleus",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(Raph ~ geno, data = apoe4)
+res.aov <- aov(Raph ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -256,7 +256,7 @@ ggplot(data = apoe4, aes(factor(Sex), Pr5)) +
    	title = "Trigeminal Sensory Nucleus",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(Pr5 ~ geno, data = apoe4)
+res.aov <- aov(Pr5 ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -270,7 +270,7 @@ ggplot(data = apoe4, aes(factor(Sex), DTg)) +
    	title = "Dorsal Tegmentum",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(DTg ~ geno, data = apoe4)
+res.aov <- aov(DTg ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -284,7 +284,7 @@ ggplot(data = apoe4, aes(factor(Sex), Tg)) +
    	title = "Tegmental Nucleus",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(Tg ~ geno, data = apoe4)
+res.aov <- aov(Tg ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -298,7 +298,7 @@ ggplot(data = apoe4, aes(factor(Sex), CoN)) +
    	title = "Cochlear Nucleus",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(CoN ~ geno, data = apoe4)
+res.aov <- aov(CoN ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -312,7 +312,7 @@ ggplot(data = apoe4, aes(factor(Sex), Pn)) +
    	title = "Pontine Nucleus",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(Pn ~ geno, data = apoe4)
+res.aov <- aov(Pn ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -326,7 +326,7 @@ ggplot(data = apoe4, aes(factor(Sex), RTg)) +
    	title = "Reticulotegmental Nucleus of Pons",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(RTg ~ geno, data = apoe4)
+res.aov <- aov(RTg ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -340,7 +340,7 @@ ggplot(data = apoe4, aes(factor(Sex), Oliv)) +
    	title = "Olivary Complex",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(Oliv ~ geno, data = apoe4)
+res.aov <- aov(Oliv ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -354,7 +354,7 @@ summary(res.aov)
 #   	title = "Pontine Reticular Nucleus",
 #   	subtitle = "Red points denoting outliers")
  
-#res.aov <- aov(PnRt ~ geno, data = apoe4)
+#res.aov <- aov(PnRt ~ Sex, data = apoe4)
 #summary(res.aov)
 #```
 
@@ -368,7 +368,7 @@ ggplot(data = apoe4, aes(factor(Sex), Sp5)) +
    	title = "Spinal Trigeminal Nucleus",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(Sp5 ~ geno, data = apoe4)
+res.aov <- aov(Sp5 ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -382,7 +382,7 @@ ggplot(data = apoe4, aes(factor(Sex), Ve)) +
    	title = "Vestibular Nuclei",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(Ve ~ geno, data = apoe4)
+res.aov <- aov(Ve ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -396,7 +396,7 @@ ggplot(data = apoe4, aes(factor(Sex), Gi)) +
    	title = "Gigantocellular Reticular Nucleus",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(Gi ~ geno, data = apoe4)
+res.aov <- aov(Gi ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -410,7 +410,7 @@ ggplot(data = apoe4, aes(factor(Sex), Cu)) +
    	title = "Cuneate Nucleus",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(Cu ~ geno, data = apoe4)
+res.aov <- aov(Cu ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -424,7 +424,7 @@ ggplot(data = apoe4, aes(factor(Sex), ac)) +
    	title = "Anterior Commisure",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(ac ~ geno, data = apoe4)
+res.aov <- aov(ac ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -438,7 +438,7 @@ ggplot(data = apoe4, aes(factor(Sex), ot)) +
    	title = "Optic Tracts",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(ot ~ geno, data = apoe4)
+res.aov <- aov(ot ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -452,7 +452,7 @@ ggplot(data = apoe4, aes(factor(Sex), fi)) +
    	title = "Fimbria",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(fi ~ geno, data = apoe4)
+res.aov <- aov(fi ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -466,7 +466,7 @@ ggplot(data = apoe4, aes(factor(Sex), cc)) +
    	title = "Corpus Callosum",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(cc ~ geno, data = apoe4)
+res.aov <- aov(cc ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -480,7 +480,7 @@ ggplot(data = apoe4, aes(factor(Sex), fx)) +
    	title = "Fornix",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(fx ~ geno, data = apoe4)
+res.aov <- aov(fx ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -494,7 +494,7 @@ ggplot(data = apoe4, aes(factor(Sex), st)) +
    	title = "Stria Terminalis",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(st ~ geno, data = apoe4)
+res.aov <- aov(st ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -508,7 +508,7 @@ ggplot(data = apoe4, aes(factor(Sex), cg)) +
    	title = "Cingulum",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(cg ~ geno, data = apoe4)
+res.aov <- aov(cg ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -522,7 +522,7 @@ ggplot(data = apoe4, aes(factor(Sex), lo)) +
    	title = "Lateral Olfactory Tract",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(lo ~ geno, data = apoe4)
+res.aov <- aov(lo ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -536,7 +536,7 @@ ggplot(data = apoe4, aes(factor(Sex), vhc)) +
    	title = "Ventral Hippocampal Commissure",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(vhc ~ geno, data = apoe4)
+res.aov <- aov(vhc ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -550,7 +550,7 @@ ggplot(data = apoe4, aes(factor(Sex), ic)) +
    	title = "Internal Capsule",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(ic ~ geno, data = apoe4)
+res.aov <- aov(ic ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -564,7 +564,7 @@ ggplot(data = apoe4, aes(factor(Sex), fr)) +
    	title = "Fasciculus Retroflexus",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(fr ~ geno, data = apoe4)
+res.aov <- aov(fr ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -578,7 +578,7 @@ ggplot(data = apoe4, aes(factor(Sex), sm)) +
    	title = "Stria Medularis",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(sm ~ geno, data = apoe4)
+res.aov <- aov(sm ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -592,7 +592,7 @@ ggplot(data = apoe4, aes(factor(Sex), mt)) +
    	title = "Mammillothalamic Tract",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(mt ~ geno, data = apoe4)
+res.aov <- aov(mt ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -606,7 +606,7 @@ ggplot(data = apoe4, aes(factor(Sex), pc)) +
    	title = "Posterior Commissure",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(pc ~ geno, data = apoe4)
+res.aov <- aov(pc ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -620,7 +620,7 @@ ggplot(data = apoe4, aes(factor(Sex), bsc)) +
    	title = "Brachium of Superior Colliculus",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(bsc ~ geno, data = apoe4)
+res.aov <- aov(bsc ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -634,7 +634,7 @@ ggplot(data = apoe4, aes(factor(Sex), cp)) +
    	title = "Cerebral Peduncle",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(cp ~ geno, data = apoe4)
+res.aov <- aov(cp ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -648,7 +648,7 @@ ggplot(data = apoe4, aes(factor(Sex), ll)) +
    	title = "Lateral Lemniscus",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(ll ~ geno, data = apoe4)
+res.aov <- aov(ll ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -662,7 +662,7 @@ ggplot(data = apoe4, aes(factor(Sex), sp5)) +
    	title = "Spinal Trigeminal Nerve",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(sp5 ~ geno, data = apoe4)
+res.aov <- aov(sp5 ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -676,7 +676,7 @@ ggplot(data = apoe4, aes(factor(Sex), py)) +
    	title = "Pyramidal Tract",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(py ~ geno, data = apoe4)
+res.aov <- aov(py ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -690,7 +690,7 @@ ggplot(data = apoe4, aes(factor(Sex), n8)) +
    	title = "Vestibulocochlear Nerve",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(n8 ~ geno, data = apoe4)
+res.aov <- aov(n8 ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -704,7 +704,7 @@ ggplot(data = apoe4, aes(factor(Sex), n7)) +
    	title = "Facial Nerve",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(n7 ~ geno, data = apoe4)
+res.aov <- aov(n7 ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -718,7 +718,7 @@ ggplot(data = apoe4, aes(factor(Sex), lfp)) +
    	title = "Longitudinal Fasciculus of Pons",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(lfp ~ geno, data = apoe4)
+res.aov <- aov(lfp ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -732,7 +732,7 @@ ggplot(data = apoe4, aes(factor(Sex), mlf_ts)) +
    	title = "Medial Longitudinal Fasciculus and Tectospinal Tract",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(mlf_ts ~ geno, data = apoe4)
+res.aov <- aov(mlf_ts ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -746,7 +746,7 @@ ggplot(data = apoe4, aes(factor(Sex), sc)) +
    	title = "Spinocerebellar Tract",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(sc ~ geno, data = apoe4)
+res.aov <- aov(sc ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -760,7 +760,7 @@ ggplot(data = apoe4, aes(factor(Sex), ml)) +
    	title = "Medial Lemniscus",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(ml ~ geno, data = apoe4)
+res.aov <- aov(ml ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -774,7 +774,7 @@ ggplot(data = apoe4, aes(factor(Sex), vsc)) +
    	title = "Ventral Spinocerebellar Tract",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(vsc ~ geno, data = apoe4)
+res.aov <- aov(vsc ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -788,7 +788,7 @@ ggplot(data = apoe4, aes(factor(Sex), mcp)) +
    	title = "Middle Cerebellar Peduncle",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(mcp ~ geno, data = apoe4)
+res.aov <- aov(mcp ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -802,7 +802,7 @@ ggplot(data = apoe4, aes(factor(Sex), scp)) +
    	title = "Superior Cerebellar Peduncle",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(scp ~ geno, data = apoe4)
+res.aov <- aov(scp ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -816,7 +816,7 @@ ggplot(data = apoe4, aes(factor(Sex), icp_oc_tz)) +
    	title = "Inferior Cerebellar Peduncle",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(icp_oc_tz ~ geno, data = apoe4)
+res.aov <- aov(icp_oc_tz ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -830,7 +830,7 @@ ggplot(data = apoe4, aes(factor(Sex), cbw)) +
    	title = "Cerebellar White Matter",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(cbw ~ geno, data = apoe4)
+res.aov <- aov(cbw ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -844,7 +844,7 @@ ggplot(data = apoe4, aes(factor(Sex), LV)) +
    	title = "Lateral Ventricle",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(LV ~ geno, data = apoe4)
+res.aov <- aov(LV ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -858,7 +858,7 @@ ggplot(data = apoe4, aes(factor(Sex), A25)) +
    	title = "Cingulate Cortex Area 25",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(A25 ~ geno, data = apoe4)
+res.aov <- aov(A25 ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -872,7 +872,7 @@ ggplot(data = apoe4, aes(factor(Sex), das)) +
    	title = "Dorsal Acustic Stria",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(das ~ geno, data = apoe4)
+res.aov <- aov(das ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -886,7 +886,7 @@ ggplot(data = apoe4, aes(factor(Sex), Post)) +
    	title = "Postsubiculum",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(Post ~ geno, data = apoe4)
+res.aov <- aov(Post ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -900,7 +900,7 @@ ggplot(data = apoe4, aes(factor(Sex), v4V)) +
    	title = "Ventricular System 4th Ventricle",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(v4V ~ geno, data = apoe4)
+res.aov <- aov(v4V ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -914,7 +914,7 @@ ggplot(data = apoe4, aes(factor(Sex), MiTg)) +
    	title = "Microcellular Tegmental Nucleus",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(MiTg ~ geno, data = apoe4)
+res.aov <- aov(MiTg ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -928,7 +928,7 @@ ggplot(data = apoe4, aes(factor(Sex), PT)) +
    	title = "Pretectal Nucleus",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(PT ~ geno, data = apoe4)
+res.aov <- aov(PT ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -942,7 +942,7 @@ ggplot(data = apoe4, aes(factor(Sex), LDVL)) +
    	title = "Latero Dorsal Thalamic Nucleus Ventro Lateral",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(LDVL ~ geno, data = apoe4)
+res.aov <- aov(LDVL ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -956,7 +956,7 @@ ggplot(data = apoe4, aes(factor(Sex), LP)) +
    	title = "Latero Posterior Nuclei of Thalamus",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(LP ~ geno, data = apoe4)
+res.aov <- aov(LP ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -970,7 +970,7 @@ ggplot(data = apoe4, aes(factor(Sex), Athal)) +
    	title = "Anterior Thalamic Nuclei",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(Athal ~ geno, data = apoe4)
+res.aov <- aov(Athal ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -984,7 +984,7 @@ ggplot(data = apoe4, aes(factor(Sex), RMC)) +
    	title = "Red Nucleus Magnocellular",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(RMC ~ geno, data = apoe4)
+res.aov <- aov(RMC ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -998,7 +998,7 @@ ggplot(data = apoe4, aes(factor(Sex), PaR)) +
    	title = "Pararubral Nucleus",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(PaR ~ geno, data = apoe4)
+res.aov <- aov(PaR ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1012,7 +1012,7 @@ ggplot(data = apoe4, aes(factor(Sex), RR)) +
    	title = "Retro Rubral Fluid",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(RR ~ geno, data = apoe4)
+res.aov <- aov(RR ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1026,7 +1026,7 @@ ggplot(data = apoe4, aes(factor(Sex), CSF)) +
    	title = "Cerebrospinal Fluid",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(CSF ~ geno, data = apoe4)
+res.aov <- aov(CSF ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1040,7 +1040,7 @@ ggplot(data = apoe4, aes(factor(Sex), IRN)) +
    	title = "Intermediate Reticular Nucleus",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(IRN ~ geno, data = apoe4)
+res.aov <- aov(IRN ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1054,7 +1054,7 @@ ggplot(data = apoe4, aes(factor(Sex), PHD_PaMP_Post_and_LatHy)) +
    	title = "Posterior Dorsal Paraventricular Medial Parvicellular Posterior Lateral Hypothalamus",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(PHD_PaMP_Post_and_LatHy ~ geno, data = apoe4)
+res.aov <- aov(PHD_PaMP_Post_and_LatHy ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1068,7 +1068,7 @@ ggplot(data = apoe4, aes(factor(Sex), PR_p3Tg_L)) +
    	title = "Prerubral Forel",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(PR_p3Tg_L ~ geno, data = apoe4)
+res.aov <- aov(PR_p3Tg_L ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1082,7 +1082,7 @@ ggplot(data = apoe4, aes(factor(Sex), PVG)) +
    	title = "PVG of Hypothalamus",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(PVG ~ geno, data = apoe4)
+res.aov <- aov(PVG ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1096,7 +1096,7 @@ ggplot(data = apoe4, aes(factor(Sex), BLA)) +
    	title = "Basal Lateral Amygdala",
    	subtitle = "Red points denoting outliers")
  
-res.aov <- aov(BLA ~ geno, data = apoe4)
+res.aov <- aov(BLA ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1111,7 +1111,7 @@ ggplot(data = apoe4, aes(factor(Sex), BS_R)) +
        title = "Brain Stem Rest",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(BS_R ~ geno, data = apoe4)
+res.aov <- aov(BS_R ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1125,7 +1125,7 @@ ggplot(data = apoe4, aes(factor(Sex), PrCn)) +
        title = "Precuneiform Nucleus",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(PrCn ~ geno, data = apoe4)
+res.aov <- aov(PrCn ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1139,7 +1139,7 @@ ggplot(data = apoe4, aes(factor(Sex), Cn)) +
        title = "Cuneiform Nucleus",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(Cn ~ geno, data = apoe4)
+res.aov <- aov(Cn ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1153,7 +1153,7 @@ ggplot(data = apoe4, aes(factor(Sex), RI)) +
        title = "Midbrain Linear Nucleus",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(RI ~ geno, data = apoe4)
+res.aov <- aov(RI ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1167,7 +1167,7 @@ ggplot(data = apoe4, aes(factor(Sex), MRN)) +
        title = "Midbrain Reticular Nucleus",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(MRN ~ geno, data = apoe4)
+res.aov <- aov(MRN ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1181,7 +1181,7 @@ ggplot(data = apoe4, aes(factor(Sex), RPC)) +
        title = "Red Nucleus Parvicellular",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(RPC ~ geno, data = apoe4)
+res.aov <- aov(RPC ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1195,7 +1195,7 @@ ggplot(data = apoe4, aes(factor(Sex), SN)) +
        title = "Substania Nigra",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(SN ~ geno, data = apoe4)
+res.aov <- aov(SN ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1209,7 +1209,7 @@ ggplot(data = apoe4, aes(factor(Sex), IC)) +
        title = "Inferior Colliculus",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(IC ~ geno, data = apoe4)
+res.aov <- aov(IC ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1223,7 +1223,7 @@ ggplot(data = apoe4, aes(factor(Sex), SC)) +
        title = "Superior Colliculus",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(SC ~ geno, data = apoe4)
+res.aov <- aov(SC ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1237,7 +1237,7 @@ ggplot(data = apoe4, aes(factor(Sex), DpMe)) +
        title = "Deep Mesencephalic Nuclei",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(DpMe ~ geno, data = apoe4)
+res.aov <- aov(DpMe ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1251,7 +1251,7 @@ ggplot(data = apoe4, aes(factor(Sex), Sub_PP)) +
        title = "Subbrachial Nucleus and Peripeduncular Nucleus",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(Sub_PP ~ geno, data = apoe4)
+res.aov <- aov(Sub_PP ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1265,7 +1265,7 @@ ggplot(data = apoe4, aes(factor(Sex), RTN)) +
        title = "Reticular Nucleus of Thalamus",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(RTN ~ geno, data = apoe4)
+res.aov <- aov(RTN ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1279,7 +1279,7 @@ ggplot(data = apoe4, aes(factor(Sex), ZI)) +
        title = "Zona Incerta",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(ZI ~ geno, data = apoe4)
+res.aov <- aov(ZI ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1293,7 +1293,7 @@ ggplot(data = apoe4, aes(factor(Sex), LGN)) +
        title = "Lateral Geniculate Nucleus",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(LGN ~ geno, data = apoe4)
+res.aov <- aov(LGN ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1307,7 +1307,7 @@ ggplot(data = apoe4, aes(factor(Sex), MGN)) +
        title = "Medial Geniculate Nucleus",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(MGN ~ geno, data = apoe4)
+res.aov <- aov(MGN ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1321,7 +1321,7 @@ ggplot(data = apoe4, aes(factor(Sex), LDNT)) +
        title = "Latero Dorsal Nucleus of Thalamus",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(LDNT ~ geno, data = apoe4)
+res.aov <- aov(LDNT ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1335,7 +1335,7 @@ ggplot(data = apoe4, aes(factor(Sex), VT)) +
        title = "Ventral Thalamic Nuclei",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(VT ~ geno, data = apoe4)
+res.aov <- aov(VT ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1349,7 +1349,7 @@ ggplot(data = apoe4, aes(factor(Sex), Thal_R)) +
        title = "Thalamus Rest",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(Thal_R ~ geno, data = apoe4)
+res.aov <- aov(Thal_R ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1363,7 +1363,7 @@ ggplot(data = apoe4, aes(factor(Sex), VTA)) +
        title = "Ventral Tegmental Area",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(VTA ~ geno, data = apoe4)
+res.aov <- aov(VTA ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1378,7 +1378,7 @@ ggplot(data = apoe4, aes(factor(Sex), APT)) +
        title = "Anterior Pretectal Nucleus",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(APT ~ geno, data = apoe4)
+res.aov <- aov(APT ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1393,7 +1393,7 @@ ggplot(data = apoe4, aes(factor(Sex), PAG)) +
        title = "Periaquaductal Grey",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(PAG ~ geno, data = apoe4)
+res.aov <- aov(PAG ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1407,7 +1407,7 @@ ggplot(data = apoe4, aes(factor(Sex), Vpal)) +
        title = "Ventral Pallidum",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(Vpal ~ geno, data = apoe4)
+res.aov <- aov(Vpal ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1421,7 +1421,7 @@ ggplot(data = apoe4, aes(factor(Sex), BNst)) +
        title = "Bed Nucleus of the Stria Terminalis",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(BNst ~ geno, data = apoe4)
+res.aov <- aov(BNst ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1435,7 +1435,7 @@ ggplot(data = apoe4, aes(factor(Sex), Acb)) +
        title = "Acumbens",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(Acb ~ geno, data = apoe4)
+res.aov <- aov(Acb ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1449,7 +1449,7 @@ ggplot(data = apoe4, aes(factor(Sex), Amy)) +
        title = "Amygdala",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(Amy ~ geno, data = apoe4)
+res.aov <- aov(Amy ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1463,7 +1463,7 @@ ggplot(data = apoe4, aes(factor(Sex), CPu)) +
        title = "Striatum",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(CPu ~ geno, data = apoe4)
+res.aov <- aov(CPu ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1477,7 +1477,7 @@ ggplot(data = apoe4, aes(factor(Sex), GP)) +
        title = "Globus Pallidus",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(GP ~ geno, data = apoe4)
+res.aov <- aov(GP ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1491,7 +1491,7 @@ ggplot(data = apoe4, aes(factor(Sex), SPT)) +
        title = "Septum",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(SPT ~ geno, data = apoe4)
+res.aov <- aov(SPT ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1505,7 +1505,7 @@ ggplot(data = apoe4, aes(factor(Sex), Sthal)) +
        title = "Subthalamic Nucleus",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(Sthal ~ geno, data = apoe4)
+res.aov <- aov(Sthal ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1519,7 +1519,7 @@ ggplot(data = apoe4, aes(factor(Sex), Preopt)) +
        title = "Preoptic Telencephalon",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(Preopt ~ geno, data = apoe4)
+res.aov <- aov(Preopt ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1533,7 +1533,7 @@ ggplot(data = apoe4, aes(factor(Sex), Hyp)) +
        title = "Hypothalamus",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(Hyp ~ geno, data = apoe4)
+res.aov <- aov(Hyp ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1547,7 +1547,7 @@ ggplot(data = apoe4, aes(factor(Sex), APir)) +
        title = "Amygdalopiriform Transition Area",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(APir ~ geno, data = apoe4)
+res.aov <- aov(APir ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1561,7 +1561,7 @@ ggplot(data = apoe4, aes(factor(Sex), Pir)) +
        title = "Periform Cortex",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(Pir ~ geno, data = apoe4)
+res.aov <- aov(Pir ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1575,7 +1575,7 @@ ggplot(data = apoe4, aes(factor(Sex), PrS)) +
        title = "Presubiculum",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(PrS ~ geno, data = apoe4)
+res.aov <- aov(PrS ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1589,7 +1589,7 @@ ggplot(data = apoe4, aes(factor(Sex), PRh)) +
        title = "Perirhinal Cortex",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(PRh ~ geno, data = apoe4)
+res.aov <- aov(PRh ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1603,7 +1603,7 @@ ggplot(data = apoe4, aes(factor(Sex), PaS)) +
        title = "Parasubiculum",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(PaS ~ geno, data = apoe4)
+res.aov <- aov(PaS ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1617,7 +1617,7 @@ ggplot(data = apoe4, aes(factor(Sex), Ect)) +
        title = "Ectorhinal Cortex",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(Ect ~ geno, data = apoe4)
+res.aov <- aov(Ect ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1631,7 +1631,7 @@ ggplot(data = apoe4, aes(factor(Sex), DTT)) +
        title = "Dorsal Tenia Tecta",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(DTT ~ geno, data = apoe4)
+res.aov <- aov(DTT ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1645,7 +1645,7 @@ ggplot(data = apoe4, aes(factor(Sex), Hc)) +
        title = "Hippocampus",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(Hc ~ geno, data = apoe4)
+res.aov <- aov(Hc ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1659,7 +1659,7 @@ ggplot(data = apoe4, aes(factor(Sex), VCl)) +
        title = "Ventral Claustrum",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(VCl ~ geno, data = apoe4)
+res.aov <- aov(VCl ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1673,7 +1673,7 @@ ggplot(data = apoe4, aes(factor(Sex), PLCo)) +
        title = "Posterolateral Cortical Amygdaloid Area",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(PLCo ~ geno, data = apoe4)
+res.aov <- aov(PLCo ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1687,7 +1687,7 @@ ggplot(data = apoe4, aes(factor(Sex), DCl)) +
        title = "Dorsal Claustrum",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(DCl ~ geno, data = apoe4)
+res.aov <- aov(DCl ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1701,7 +1701,7 @@ ggplot(data = apoe4, aes(factor(Sex), Cl)) +
        title = "Claustrum",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(Cl ~ geno, data = apoe4)
+res.aov <- aov(Cl ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1715,7 +1715,7 @@ ggplot(data = apoe4, aes(factor(Sex), VIEnt)) +
        title = "Ventral Intermediate Entorhinal Cortex",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(VIEnt ~ geno, data = apoe4)
+res.aov <- aov(VIEnt ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1729,7 +1729,7 @@ ggplot(data = apoe4, aes(factor(Sex), MEnt)) +
        title = "Left Caudomedial Entorhinal Cortex",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(MEnt ~ geno, data = apoe4)
+res.aov <- aov(MEnt ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1743,7 +1743,7 @@ ggplot(data = apoe4, aes(factor(Sex), DLEnt)) +
        title = "Left Dorsolateral Entorhinal Cortex",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(DLEnt ~ geno, data = apoe4)
+res.aov <- aov(DLEnt ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1757,7 +1757,7 @@ ggplot(data = apoe4, aes(factor(Sex), DIEnt)) +
        title = "Left Dorsal Intermediate Entorhinal Cortex",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(DIEnt ~ geno, data = apoe4)
+res.aov <- aov(DIEnt ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1771,7 +1771,7 @@ ggplot(data = apoe4, aes(factor(Sex), CEnt)) +
        title = "Left Caudomedial Entorhinal Cortex",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(CEnt ~ geno, data = apoe4)
+res.aov <- aov(CEnt ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1785,7 +1785,7 @@ ggplot(data = apoe4, aes(factor(Sex), VO)) +
        title = "Left Ventral Orbital Cortex",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(VO ~ geno, data = apoe4)
+res.aov <- aov(VO ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1800,7 +1800,7 @@ ggplot(data = apoe4, aes(factor(Sex), V2MM)) +
        title = "Left Secondary Visual Cortex Mediomedial Area",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(V2MM ~ geno, data = apoe4)
+res.aov <- aov(V2MM ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1814,7 +1814,7 @@ ggplot(data = apoe4, aes(factor(Sex), V2ML)) +
        title = "Left Secondary Visual Cortex Mediolateral Area",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(V2ML ~ geno, data = apoe4)
+res.aov <- aov(V2ML ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1828,7 +1828,7 @@ ggplot(data = apoe4, aes(factor(Sex), V2L)) +
        title = "Left Secondary Visual Cortex Lateral Area",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(V2L ~ geno, data = apoe4)
+res.aov <- aov(V2L ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1842,7 +1842,7 @@ ggplot(data = apoe4, aes(factor(Sex), V1M)) +
        title = "Left Primary Visual Cortex Monocular Area",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(V1M ~ geno, data = apoe4)
+res.aov <- aov(V1M ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1856,7 +1856,7 @@ ggplot(data = apoe4, aes(factor(Sex), V1B)) +
        title = "Left Primary Visual Cortex Binocular Area",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(V1B ~ geno, data = apoe4)
+res.aov <- aov(V1B ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1870,7 +1870,7 @@ ggplot(data = apoe4, aes(factor(Sex), V1)) +
        title = "Left Primary Visual Cortex",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(V1 ~ geno, data = apoe4)
+res.aov <- aov(V1 ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1884,7 +1884,7 @@ ggplot(data = apoe4, aes(factor(Sex), TeA)) +
        title = "Left Temporal Association Cortex",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(TeA ~ geno, data = apoe4)
+res.aov <- aov(TeA ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1897,7 +1897,7 @@ ggplot(data = apoe4, aes(factor(Sex), S2)) +
        y = "Left Secondary Somatosensory Cortex",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(S2 ~ geno, data = apoe4)
+res.aov <- aov(S2 ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1911,7 +1911,7 @@ ggplot(data = apoe4, aes(factor(Sex), S1ULp)) +
        title = "Left Primary Somatosensory Cortex Upper Lip Region",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(S1ULp ~ geno, data = apoe4)
+res.aov <- aov(S1ULp ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1925,7 +1925,7 @@ ggplot(data = apoe4, aes(factor(Sex), S1Tr)) +
        title = "Left Primary Somatosensory Cortex Trunk Region",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(S1Tr ~ geno, data = apoe4)
+res.aov <- aov(S1Tr ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1939,7 +1939,7 @@ ggplot(data = apoe4, aes(factor(Sex), S1Sh)) +
        title = "Left Primary Somatosensory Cortex Shoulder Region",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(S1Sh ~ geno, data = apoe4)
+res.aov <- aov(S1Sh ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1953,7 +1953,7 @@ ggplot(data = apoe4, aes(factor(Sex), S1J)) +
        title = "Left Primary Somatosensory Cortex Jaw Region",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(S1J ~ geno, data = apoe4)
+res.aov <- aov(S1J ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1967,7 +1967,7 @@ ggplot(data = apoe4, aes(factor(Sex), S1HL)) +
        title = "Left Primary Somatosensory Cortex Hindlimb Region",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(S1HL ~ geno, data = apoe4)
+res.aov <- aov(S1HL ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1981,7 +1981,7 @@ ggplot(data = apoe4, aes(factor(Sex), S1FL)) +
        title = "Left Primary Somatosensory Cortex Forelimb Region",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(S1FL ~ geno, data = apoe4)
+res.aov <- aov(S1FL ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -1995,7 +1995,7 @@ ggplot(data = apoe4, aes(factor(Sex), S1BF)) +
        title = "Left Primary Somatosensory Cortex Dysgranular Zone",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(S1DZ ~ geno, data = apoe4)
+res.aov <- aov(S1DZ ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -2009,7 +2009,7 @@ ggplot(data = apoe4, aes(factor(Sex), S1BF)) +
        title = "Left Primary Somatosensory Cortex Barrel Field",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(S1BF ~ geno, data = apoe4)
+res.aov <- aov(S1BF ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -2023,7 +2023,7 @@ ggplot(data = apoe4, aes(factor(Sex), S1)) +
        title = "Left Primary Somatosensory Cortex",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(S1 ~ geno, data = apoe4)
+res.aov <- aov(S1 ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -2037,7 +2037,7 @@ ggplot(data = apoe4, aes(factor(Sex), PtPR)) +
        title = "Left Parietal Cortex Posterial Area Rostral Part",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(PtPR ~ geno, data = apoe4)
+res.aov <- aov(PtPR ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -2051,7 +2051,7 @@ ggplot(data = apoe4, aes(factor(Sex), MPtA)) +
        title = "Left Medial Parietal Association Cortex",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(MPtA ~ geno, data = apoe4)
+res.aov <- aov(MPtA ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -2065,7 +2065,7 @@ ggplot(data = apoe4, aes(factor(Sex), MO)) +
        title = "Left Medial Orbital Cortex",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(MO ~ geno, data = apoe4)
+res.aov <- aov(MO ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -2079,7 +2079,7 @@ ggplot(data = apoe4, aes(factor(Sex), M2)) +
        title = "Left Secondary Motor Cortex",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(M2 ~ geno, data = apoe4)
+res.aov <- aov(M2 ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -2093,7 +2093,7 @@ ggplot(data = apoe4, aes(factor(Sex), M1)) +
        title = "Left Primary Motor Cortex",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(M1 ~ geno, data = apoe4)
+res.aov <- aov(M1 ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -2107,7 +2107,7 @@ ggplot(data = apoe4, aes(factor(Sex), LPtA)) +
        title = "Left Lateral Parietal Association Cortex",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(LPtA ~ geno, data = apoe4)
+res.aov <- aov(LPtA ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -2121,7 +2121,7 @@ ggplot(data = apoe4, aes(factor(Sex), LO)) +
        title = "Left Lateral Orbital Cortex",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(LO ~ geno, data = apoe4)
+res.aov <- aov(LO ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -2135,7 +2135,7 @@ ggplot(data = apoe4, aes(factor(Sex), Ins)) +
        title = "Left Insular Cortex",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(Ins ~ geno, data = apoe4)
+res.aov <- aov(Ins ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -2149,7 +2149,7 @@ ggplot(data = apoe4, aes(factor(Sex), FrA)) +
        title = "Left Frontal Assocation Cortex",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(FrA ~ geno, data = apoe4)
+res.aov <- aov(FrA ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -2163,7 +2163,7 @@ ggplot(data = apoe4, aes(factor(Sex), Fr3)) +
        title = "Left Frontal Cortex Area 3",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(Fr3 ~ geno, data = apoe4)
+res.aov <- aov(Fr3 ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -2177,7 +2177,7 @@ ggplot(data = apoe4, aes(factor(Sex), DLO)) +
        title = "Left Dorsolateral Orbital Cortex",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(DLO ~ geno, data = apoe4)
+res.aov <- aov(DLO ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -2191,7 +2191,7 @@ ggplot(data = apoe4, aes(factor(Sex), AuV)) +
        title = "Left Secondary Auditory Cortex Ventral Part",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(AuV ~ geno, data = apoe4)
+res.aov <- aov(AuV ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -2205,7 +2205,7 @@ ggplot(data = apoe4, aes(factor(Sex), AuD)) +
        title = "Left Secondary Auditory Cortex Dorsal Part",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(AuD ~ geno, data = apoe4)
+res.aov <- aov(AuD ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -2219,7 +2219,7 @@ ggplot(data = apoe4, aes(factor(Sex), Au1)) +
        title = "Left Primary Auditory Cortex",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(Au1 ~ geno, data = apoe4)
+res.aov <- aov(Au1 ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -2233,7 +2233,7 @@ ggplot(data = apoe4, aes(factor(Sex), A32)) +
        title = "Left Cingulate Cortex Area 32",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(A32 ~ geno, data = apoe4)
+res.aov <- aov(A32 ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -2247,7 +2247,7 @@ ggplot(data = apoe4, aes(factor(Sex), A30)) +
        title = "Left Cingulate Cortex Area 30",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(A30 ~ geno, data = apoe4)
+res.aov <- aov(A30 ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -2261,7 +2261,7 @@ ggplot(data = apoe4, aes(factor(Sex), A29c)) +
        title = "Left Cingulate Cortex Area 29c",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(A29c ~ geno, data = apoe4)
+res.aov <- aov(A29c ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -2275,7 +2275,7 @@ ggplot(data = apoe4, aes(factor(Sex), A29b)) +
        title = "Left Cingulate Cortex Area 29b",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(A29b ~ geno, data = apoe4)
+res.aov <- aov(A29b ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -2289,7 +2289,7 @@ ggplot(data = apoe4, aes(factor(Sex), A29a)) +
        title = "Left Cingulate Cortex Area 29a",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(A29a ~ geno, data = apoe4)
+res.aov <- aov(A29a ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -2303,7 +2303,7 @@ ggplot(data = apoe4, aes(factor(Sex), A24bPrime)) +
        title = "Left Cingulate Cortex Area 24b Prime",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(A24bPrime ~ geno, data = apoe4)
+res.aov <- aov(A24bPrime ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -2317,7 +2317,7 @@ ggplot(data = apoe4, aes(factor(Sex), A24b)) +
        title = "Left Cingulate Cortex Area 24b",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(A24b ~ geno, data = apoe4)
+res.aov <- aov(A24b ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -2331,7 +2331,7 @@ ggplot(data = apoe4, aes(factor(Sex), A24aPrime)) +
        title = "Left Cingulate Cortex Area 24a Prime",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(A24aPrime ~ geno, data = apoe4)
+res.aov <- aov(A24aPrime ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -2345,7 +2345,7 @@ ggplot(data = apoe4, aes(factor(Sex), A24a)) +
        title = "Left Cingulate Cortex Area 24a",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(A24a ~ geno, data = apoe4)
+res.aov <- aov(A24a ~ Sex, data = apoe4)
 summary(res.aov)
 ```
 
@@ -2359,6 +2359,6 @@ ggplot(data = apoe4, aes(factor(Sex), Exterior)) +
        title = "Exterior",
        subtitle = "Red points denoting outliers") 
 
-res.aov <- aov(Exterior ~ geno, data = apoe4)
+res.aov <- aov(Exterior ~ Sex, data = apoe4)
 summary(res.aov)
 ```
