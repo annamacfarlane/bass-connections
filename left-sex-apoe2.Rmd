@@ -1,0 +1,2366 @@
+---
+title: "Left APOE2 Disaggregated by Sex"
+author: "Anna MacFarlane"
+date: "3/21/2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+new <- read.csv("propGeno4Left.csv")
+apoe2 <- new %>% 
+  filter(! is.na(Genotype)) %>% 
+  filter(Genotype != "") %>% 
+  filter(Genotype != "HN") %>% 
+  mutate(geno = case_when(
+    Genotype == "APOE2" | Genotype == "APOE22" ~ "APOE2",
+    Genotype == "APOE3" | Genotype == "APOE33" ~ "APOE3",
+    Genotype == "APOE4" | Genotype == "APOE44" ~ "APOE4",
+    Genotype == "CVN" ~ "CVN"
+  )) %>% 
+  filter(geno == "APOE2") %>% 
+  #group_by(geno) %>% 
+  group_by(Sex)
+
+```
+
+```{r Iped, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), Iped)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Interpeduncular Nucleus: APOE2",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(Iped ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r Cb_1_10, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), Cb_1_10)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Cerebellar Cortex",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(Cb_1_10 ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r Den, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), Den)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Dentate (Lateral) Nucleus of Cerebellum",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(Den ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r Int, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), Int)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Interposed Nucleus of Cerebellum",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(Int ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r FasDL, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), FasDL)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Fastigial Medial Dorsolateral Nucleus of Cerebellum",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(FasDL ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r FasMed, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), FasMed)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Fastigial Medial Nucleus of Cerebellum",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(FasMed ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+#```{r VII, echo = FALSE}
+#ggplot(data = apoe2, aes(factor(Sex), VII)) +
+  #geom_violin() +
+  #geom_boxplot(width = 0.1, outlier.color = "red") +
+  #geom_jitter(height = 0, width = 0.3) +
+  #labs(x = "Sex",
+   	#y = "",
+   	#title = "Ventral Lateral Lemniscus Nucleus",
+   	#subtitle = "Red points denoting outliers")
+ 
+#res.aov <- aov(VII ~ geno, data = apoe2)
+#summary(res.aov)
+#```
+
+```{r ParB, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), ParB)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Parabrachial Nucleus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(ParB ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r KF, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), KF)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Parabrachial Medial Nucleus and Koelliker Fuse Nucleus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(KF ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r PCRt, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), PCRt)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Parvicellular Reticular Nucleus and Principal Sensory Trigeminal Nucleus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(PCRt ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r CG, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), CG)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Central Gray",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(CG ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r Su5, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), Su5)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Pedunculotegmental Medial Paralemniscial and Supratrigemnial Nuclei",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(Su5 ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r m5, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), m5)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Motor Root of Trigeminal Nerve",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(m5 ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r n5N, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), n5N)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Trigeminal Motor Nucleus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(n5N ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r PnC, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), PnC)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Pontine Reticular Nucleus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(PnC ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r Raph, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), Raph)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Raphe Nucleus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(Raph ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r Pr5, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), Pr5)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Trigeminal Sensory Nucleus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(Pr5 ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r DTg, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), DTg)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Dorsal Tegmentum",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(DTg ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r Tg, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), Tg)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Tegmental Nucleus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(Tg ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r CoN, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), CoN)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Cochlear Nucleus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(CoN ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r Pn, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), Pn)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Pontine Nucleus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(Pn ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r RTg, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), RTg)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Reticulotegmental Nucleus of Pons",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(RTg ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r Oliv, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), Oliv)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Olivary Complex",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(Oliv ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+#```{r PnRt, echo = FALSE}
+#ggplot(data = apoe2, aes(factor(Sex), PnRt)) +
+#  geom_violin() +
+#  geom_boxplot(width = 0.1, outlier.color = "red") +
+#  geom_jitter(height = 0, width = 0.3) +
+#  labs(x = "Sex",
+#   	y = "",
+#   	title = "Pontine Reticular Nucleus",
+#   	subtitle = "Red points denoting outliers")
+ 
+#res.aov <- aov(PnRt ~ geno, data = apoe2)
+#summary(res.aov)
+#```
+
+```{r Sp5, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), Sp5)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Spinal Trigeminal Nucleus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(Sp5 ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r Ve, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), Ve)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Vestibular Nuclei",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(Ve ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r Gi, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), Gi)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Gigantocellular Reticular Nucleus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(Gi ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r Cu, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), Cu)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Cuneate Nucleus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(Cu ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r ac, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), ac)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Anterior Commisure",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(ac ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r ot, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), ot)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Optic Tracts",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(ot ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r fi, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), fi)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Fimbria",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(fi ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r cc, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), cc)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Corpus Callosum",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(cc ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r fx, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), fx)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Fornix",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(fx ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r st, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), st)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Stria Terminalis",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(st ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r cg, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), cg)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Cingulum",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(cg ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r lo, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), lo)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Lateral Olfactory Tract",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(lo ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r vhc, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), vhc)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Ventral Hippocampal Commissure",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(vhc ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r ic, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), ic)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Internal Capsule",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(ic ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r fr, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), fr)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Fasciculus Retroflexus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(fr ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r sm, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), sm)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Stria Medularis",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(sm ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r mt, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), mt)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Mammillothalamic Tract",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(mt ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r pc, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), pc)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Posterior Commissure",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(pc ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r bsc, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), bsc)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Brachium of Superior Colliculus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(bsc ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r cp, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), cp)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Cerebral Peduncle",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(cp ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r ll, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), ll)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Lateral Lemniscus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(ll ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r sp5, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), sp5)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Spinal Trigeminal Nerve",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(sp5 ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r py, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), py)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Pyramidal Tract",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(py ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r n8, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), n8)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Vestibulocochlear Nerve",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(n8 ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r n7, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), n7)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Facial Nerve",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(n7 ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r lfp, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), lfp)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Longitudinal Fasciculus of Pons",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(lfp ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r mlf_ts, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), mlf_ts)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Medial Longitudinal Fasciculus and Tectospinal Tract",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(mlf_ts ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r sc, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), sc)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Spinocerebellar Tract",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(sc ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r ml, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), ml)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Medial Lemniscus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(ml ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r vsc, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), vsc)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Ventral Spinocerebellar Tract",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(vsc ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r mcp, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), mcp)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Middle Cerebellar Peduncle",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(mcp ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r scp, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), scp)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Superior Cerebellar Peduncle",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(scp ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r icp_oc_tz, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), icp_oc_tz)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Inferior Cerebellar Peduncle",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(icp_oc_tz ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r cbw, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), cbw)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Cerebellar White Matter",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(cbw ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r LV, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), LV)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Lateral Ventricle",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(LV ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r A25, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), A25)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Cingulate Cortex Area 25",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(A25 ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r das, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), das)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Dorsal Acustic Stria",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(das ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r Post, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), Post)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Postsubiculum",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(Post ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r v4V, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), v4V)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Ventricular System 4th Ventricle",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(v4V ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r MiTg, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), MiTg)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Microcellular Tegmental Nucleus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(MiTg ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r PT, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), PT)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Pretectal Nucleus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(PT ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r LDVL, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), LDVL)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Latero Dorsal Thalamic Nucleus Ventro Lateral",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(LDVL ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r LP, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), LP)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Latero Posterior Nuclei of Thalamus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(LP ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r Athal, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), Athal)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Anterior Thalamic Nuclei",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(Athal ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r RMC, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), RMC)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Red Nucleus Magnocellular",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(RMC ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r PaR, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), PaR)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Pararubral Nucleus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(PaR ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r RR, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), RR)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Retro Rubral Fluid",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(RR ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r CSF, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), CSF)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Cerebrospinal Fluid",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(CSF ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r IRN, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), IRN)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Intermediate Reticular Nucleus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(IRN ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r PHD_PaMP_Post_and_LatHy, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), PHD_PaMP_Post_and_LatHy)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Posterior Dorsal Paraventricular Medial Parvicellular Posterior Lateral Hypothalamus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(PHD_PaMP_Post_and_LatHy ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r PR_p3Tg_L, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), PR_p3Tg_L)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Prerubral Forel",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(PR_p3Tg_L ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r PVG, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), PVG)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "PVG of Hypothalamus",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(PVG ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r BLA, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), BLA)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+   	y = "",
+   	title = "Basal Lateral Amygdala",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(BLA ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+
+```{r BS_R, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), BS_R)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Brain Stem Rest",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(BS_R ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r PrCn, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), PrCn)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Precuneiform Nucleus",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(PrCn ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r Cn, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), Cn)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Cuneiform Nucleus",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(Cn ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r RI, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), RI)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Midbrain Linear Nucleus",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(RI ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r MRN, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), MRN)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Midbrain Reticular Nucleus",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(MRN ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r RPC, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), RPC)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Red Nucleus Parvicellular",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(RPC ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r SN, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), SN)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Substania Nigra",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(SN ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r IC, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), IC)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Inferior Colliculus",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(IC ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r SC, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), SC)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Superior Colliculus",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(SC ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r DpMe, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), DpMe)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Deep Mesencephalic Nuclei",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(DpMe ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r Sub_PP, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), Sub_PP)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Subbrachial Nucleus and Peripeduncular Nucleus",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(Sub_PP ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r RTN, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), RTN)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Reticular Nucleus of Thalamus",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(RTN ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r ZI, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), ZI)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Zona Incerta",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(ZI ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r LGN, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), LGN)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Lateral Geniculate Nucleus",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(LGN ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r MGN, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), MGN)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Medial Geniculate Nucleus",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(MGN ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r LDNT, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), LDNT)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Latero Dorsal Nucleus of Thalamus",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(LDNT ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r VT, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), VT)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Ventral Thalamic Nuclei",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(VT ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r Thal_R, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), Thal_R)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Thalamus Rest",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(Thal_R ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r VTA, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), VTA)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Ventral Tegmental Area",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(VTA ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+
+```{r APT, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), APT)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Anterior Pretectal Nucleus",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(APT ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+
+```{r PAG, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), PAG)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Periaquaductal Grey",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(PAG ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r Vpal, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), Vpal)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Ventral Pallidum",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(Vpal ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r BNst, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), BNst)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Bed Nucleus of the Stria Terminalis",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(BNst ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r Acb, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), Acb)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Acumbens",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(Acb ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r Amy, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), Amy)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Amygdala",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(Amy ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r CPu, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), CPu)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Striatum",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(CPu ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r GP, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), GP)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Globus Pallidus",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(GP ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r SPT, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), SPT)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Septum",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(SPT ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r Sthal, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), Sthal)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Subthalamic Nucleus",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(Sthal ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r Preopt, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), Preopt)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Preoptic Telencephalon",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(Preopt ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r Hyp, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), Hyp)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Hypothalamus",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(Hyp ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r APir, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), APir)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Amygdalopiriform Transition Area",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(APir ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r Pir, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), Pir)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Periform Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(Pir ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r PrS, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), PrS)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Presubiculum",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(PrS ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r PRh, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), PRh)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Perirhinal Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(PRh ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r PaS, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), PaS)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Parasubiculum",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(PaS ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r Ect, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), Ect)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Ectorhinal Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(Ect ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r DTT, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), DTT)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Dorsal Tenia Tecta",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(DTT ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r Hc, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), Hc)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Hippocampus",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(Hc ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r VCl, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), VCl)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Ventral Claustrum",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(VCl ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r PLCo, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), PLCo)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Posterolateral Cortical Amygdaloid Area",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(PLCo ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r DCl, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), DCl)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Dorsal Claustrum",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(DCl ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r Cl, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), Cl)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Claustrum",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(Cl ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r VIEnt, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), VIEnt)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Ventral Intermediate Entorhinal Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(VIEnt ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r MEnt, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), MEnt)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Left Caudomedial Entorhinal Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(MEnt ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r DLEnt, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), DLEnt)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Left Dorsolateral Entorhinal Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(DLEnt ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r DIEnt, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), DIEnt)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Left Dorsal Intermediate Entorhinal Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(DIEnt ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r CEnt, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), CEnt)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Left Caudomedial Entorhinal Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(CEnt ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r VO, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), VO)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Left Ventral Orbital Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(VO ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+
+```{r V2MM, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), V2MM)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Left Secondary Visual Cortex Mediomedial Area",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(V2MM ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r V2ML, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), V2ML)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Left Secondary Visual Cortex Mediolateral Area",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(V2ML ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r V2L, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), V2L)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Left Secondary Visual Cortex Lateral Area",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(V2L ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r V1M, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), V1M)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Left Primary Visual Cortex Monocular Area",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(V1M ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r V1B, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), V1B)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Left Primary Visual Cortex Binocular Area",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(V1B ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r V1, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), V1)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Left Primary Visual Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(V1 ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r TeA, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), TeA)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Left Temporal Association Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(TeA ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r S2, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), S2)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "Left Secondary Somatosensory Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(S2 ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r S1ULp, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), S1ULp)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Left Primary Somatosensory Cortex Upper Lip Region",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(S1ULp ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r S1Tr, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), S1Tr)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Left Primary Somatosensory Cortex Trunk Region",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(S1Tr ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r S1Sh, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), S1Sh)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Left Primary Somatosensory Cortex Shoulder Region",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(S1Sh ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r S1J, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), S1J)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Left Primary Somatosensory Cortex Jaw Region",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(S1J ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r S1HL, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), S1HL)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Left Primary Somatosensory Cortex Hindlimb Region",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(S1HL ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r S1FL, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), S1FL)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Left Primary Somatosensory Cortex Forelimb Region",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(S1FL ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r S1DZ, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), S1BF)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Left Primary Somatosensory Cortex Dysgranular Zone",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(S1DZ ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r S1BF, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), S1BF)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Left Primary Somatosensory Cortex Barrel Field",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(S1BF ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r S1, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), S1)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Left Primary Somatosensory Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(S1 ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r PtPR, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), PtPR)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Left Parietal Cortex Posterial Area Rostral Part",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(PtPR ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r MPtA, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), MPtA)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Left Medial Parietal Association Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(MPtA ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r MO, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), MO)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Left Medial Orbital Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(MO ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r M2, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), M2)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Left Secondary Motor Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(M2 ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r M1, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), M1)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Left Primary Motor Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(M1 ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r LPtA, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), LPtA)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Left Lateral Parietal Association Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(LPtA ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r LO, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), LO)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Left Lateral Orbital Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(LO ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r Ins, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), Ins)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Left Insular Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(Ins ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r FrA, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), FrA)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Left Frontal Assocation Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(FrA ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r Fr3, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), Fr3)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Left Frontal Cortex Area 3",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(Fr3 ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r DLO, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), DLO)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Left Dorsolateral Orbital Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(DLO ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r AuV, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), AuV)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Left Secondary Auditory Cortex Ventral Part",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(AuV ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r AuD, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), AuD)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Left Secondary Auditory Cortex Dorsal Part",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(AuD ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r Au1, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), Au1)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Left Primary Auditory Cortex",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(Au1 ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r A32, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), A32)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Left Cingulate Cortex Area 32",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(A32 ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r A30, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), A30)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Left Cingulate Cortex Area 30",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(A30 ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r A29c, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), A29c)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Left Cingulate Cortex Area 29c",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(A29c ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r A29b, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), A29b)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Left Cingulate Cortex Area 29b",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(A29b ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r A29a, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), A29a)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Left Cingulate Cortex Area 29a",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(A29a ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r A24bPrime, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), A24bPrime)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Left Cingulate Cortex Area 24b Prime",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(A24bPrime ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r A24b, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), A24b)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Left Cingulate Cortex Area 24b",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(A24b ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r A24aPrime, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), A24aPrime)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Left Cingulate Cortex Area 24a Prime",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(A24aPrime ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r A24a, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), A24a)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Left Cingulate Cortex Area 24a",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(A24a ~ geno, data = apoe2)
+summary(res.aov)
+```
+
+```{r Exterior, echo = FALSE}
+ggplot(data = apoe2, aes(factor(Sex), Exterior)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Sex",
+       y = "",
+       title = "Exterior",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(Exterior ~ geno, data = apoe2)
+summary(res.aov)
+```
