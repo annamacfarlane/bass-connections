@@ -10,6 +10,13 @@ library(tidyverse)
 
 corrLeft <- read.csv("corrLeft.csv")
 corrRight <- read.csv("corrRight.csv")
+
+apoe4right <- read.csv("right-sex-apoe4-significantvalues.csv")
+```
+
+## Right APOE4 
+```{r corrections-right-apoe4, echo = FALSE}
+p.adjust(apoe4right$pval, method = "fdr", n = 165)
 ```
 
 ## Left Hemisphere
