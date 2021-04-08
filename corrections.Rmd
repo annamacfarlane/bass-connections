@@ -12,6 +12,18 @@ corrLeft <- read.csv("corrLeft.csv")
 corrRight <- read.csv("corrRight.csv")
 
 apoe4right <- read.csv("right-sex-apoe4-significantvalues.csv")
+apoe3right <- read.csv("right-sex-apoe3-significantvalues.csv")
+apoe2right <- read.csv("right-sex-apoe2-significantvalues.csv")
+```
+
+## Right APOE2
+```{r corrections-right-apoe2, echo = FALSE}
+p.adjust(apoe2right$Pval, method = "fdr", n = 165)
+```
+
+## Right APOE3
+```{r corrections-right-apoe3, echo = FALSE}
+p.adjust(apoe3right$Pval, method = "fdr", n = 165)
 ```
 
 ## Right APOE4 
