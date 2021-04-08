@@ -1,0 +1,12 @@
+---
+title: "CBF Correlations"
+author: "Anna MacFarlane"
+date: "4/7/2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+cbf <- read.csv("CBF_ZijanDong_03.csv")
+```
+
