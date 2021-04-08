@@ -7,6 +7,35 @@ output: pdf_document
 
 ```{r setup, include=FALSE}
 library(tidyverse)
-cbf <- read.csv("CBF_ZijanDong_03.csv")
+cbf <- read.csv("CBF_ZijianDong_03.csv")
+
+cbf <- cbf %>% 
+    filter(! is.na(treatment)) 
+view(cbf)
 ```
 
+### Correlations CBF and Exercise Treatment
+
+```{r corr}
+m_cbf_exercise <- lm(CBF ~ treatment, data = cbf)
+
+ggplot(data = cbf, aes(x = treatment, y = CBF)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  labs(title = "Test",
+       subtitle = "Between age and survival",
+       x = "treatment type",
+       y = "Cerebral Blood Flow")
+
+ggplot(data = cbf, aes(factor(Treatment), CBF)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Treatment Type",
+   	y = "",
+   	title = "CBF distrubution by treatment type",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(CBF ~ Treatment, data = cbf)
+summary(res.aov)
+```
