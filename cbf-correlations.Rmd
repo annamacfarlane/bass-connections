@@ -11,7 +11,12 @@ cbf <- read.csv("CBF_ZijianDong_03.csv")
 
 cbf <- cbf %>% 
     filter(! is.na(treatment)) 
-view(cbf)
+# view(cbf)
+
+cbf1 <- cbf %>% 
+  filter(Treatment == "runningwheel_only" | Treatment == "sedentary")
+cbf2 <- cbf %>% 
+   filter(Treatment == "treadmill" | Treatment == "sedentary")
 ```
 
 ### Correlations CBF and Exercise Treatment
@@ -37,5 +42,35 @@ ggplot(data = cbf, aes(factor(Treatment), CBF)) +
    	subtitle = "Red points denoting outliers")
  
 res.aov <- aov(CBF ~ Treatment, data = cbf)
+summary(res.aov)
+```
+## specific correlations
+```{r cbf1}
+ggplot(data = cbf1, aes(factor(Treatment), CBF)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Treatment Type",
+   	y = "",
+   	title = "CBF distrubution between running wheel and sedentary treatments",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(CBF ~ Treatment, data = cbf1)
+summary(res.aov)
+```
+
+
+
+``` {r cbf2}
+ggplot(data = cbf2, aes(factor(Treatment), CBF)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Treatment Type",
+   	y = "",
+   	title = "CBF distrubution between treadmill and sedentary treatments",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(CBF ~ Treatment, data = cbf2)
 summary(res.aov)
 ```
