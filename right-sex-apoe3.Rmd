@@ -1968,7 +1968,7 @@ ggplot(data = apoe3, aes(factor(Sex), S1HL)) +
   geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
   labs(x = "Genotype",
        y = "",
-       title = "Left Primary Somatosensory Cortex Hindlimb Region",
+       title = "Primary Somatosensory Cortex Hindlimb Region",
        subtitle = "Red points denoting outliers") 
 
 res.aov <- aov(S1HL ~ Sex, data = apoe3)

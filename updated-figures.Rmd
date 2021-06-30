@@ -1,0 +1,39 @@
+---
+title: "Updated Figures"
+author: "Anna MacFarlane"
+date: "5/17/2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+
+new <- read.csv("propGeno4Right.csv")
+
+apoe3 <- new %>% 
+  filter(! is.na(Genotype)) %>% 
+  filter(Genotype != "") %>% 
+  filter(Genotype != "HN") %>% 
+  mutate(geno = case_when(
+    Genotype == "APOE2" | Genotype == "APOE22" ~ "APOE2",
+    Genotype == "APOE3" | Genotype == "APOE33" ~ "APOE3",
+    Genotype == "APOE4" | Genotype == "APOE44" ~ "APOE4",
+    Genotype == "CVN" ~ "CVN"
+  )) %>% 
+  filter(geno == "APOE3") %>% 
+  group_by(geno) %>% 
+  group_by(Sex) 
+```
+
+```{r S1HL, echo = FALSE}
+ggplot(data = apoe3, aes(factor(Sex), S1HL)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Primary Somatosensory Cortex Hindlimb Region") 
+
+res.aov <- aov(S1HL ~ Sex, data = apoe3)
+summary(res.aov)
+```

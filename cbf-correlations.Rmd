@@ -8,6 +8,7 @@ output: pdf_document
 ```{r setup, include=FALSE}
 library(tidyverse)
 cbf <- read.csv("CBF_ZijianDong_03.csv")
+view(cbf)
 
 cbf <- cbf %>% 
     filter(! is.na(treatment)) 
@@ -17,20 +18,59 @@ cbf1 <- cbf %>%
   filter(Treatment == "runningwheel_only" | Treatment == "sedentary")
 cbf2 <- cbf %>% 
    filter(Treatment == "treadmill" | Treatment == "sedentary")
+cbf3 <- cbf %>% 
+  filter(Treatment == "runningwheel_only" | Treatment == "treadmill")
+
+new <- read.csv("propGeno4Right.csv")
+
+apoe3 <- new %>% 
+  filter(! is.na(Genotype)) %>% 
+  filter(Genotype != "") %>% 
+  filter(Genotype != "HN") %>% 
+  mutate(geno = case_when(
+    Genotype == "APOE2" | Genotype == "APOE22" ~ "APOE2",
+    Genotype == "APOE3" | Genotype == "APOE33" ~ "APOE3",
+    Genotype == "APOE4" | Genotype == "APOE44" ~ "APOE4",
+    Genotype == "CVN" ~ "CVN"
+  )) %>% 
+  filter(geno == "APOE3") %>% 
+  group_by(geno) %>% 
+  group_by(Sex) 
+
+newL <- read.csv("propGeno4Left.csv")
+newL <- newL %>% 
+  filter(! is.na(Genotype)) %>% 
+  filter(Genotype != "") %>% 
+  filter(Genotype != "HN") %>% 
+  mutate(geno = case_when(
+    Genotype == "APOE2" | Genotype == "APOE22" ~ "APOE2",
+    Genotype == "APOE3" | Genotype == "APOE33" ~ "APOE3",
+    Genotype == "APOE4" | Genotype == "APOE44" ~ "APOE4",
+    Genotype == "CVN" ~ "CVN"
+  )) %>% 
+  group_by(geno) 
 ```
 
-### Correlations CBF and Exercise Treatment
-
-```{r corr}
-m_cbf_exercise <- lm(CBF ~ treatment, data = cbf)
+### Linear model regression
+```{r reg, echo = FALSE}
+m_cbf <- lm(CBF ~ treatment, data = cbf)
 
 ggplot(data = cbf, aes(x = treatment, y = CBF)) +
   geom_point() +
   geom_smooth(method = "lm") +
-  labs(title = "Test",
-       subtitle = "Between age and survival",
-       x = "treatment type",
-       y = "Cerebral Blood Flow")
+  labs(x = "Treatment type", 
+       y = "Cerebral blood flow",
+       title = "Linear model of regression for CBF and treatment type") +
+  #theme(axis.text.x = element_blank(),
+  #      axis.ticks.x = element_blank()) +
+  scale_x_continuous(breaks = c(0, 1, 2))
+
+tidy(m_cbf)
+
+```
+### Correlations CBF and Exercise Treatment
+
+```{r corr}
 
 ggplot(data = cbf, aes(factor(Treatment), CBF)) +
   geom_violin() +
@@ -38,8 +78,7 @@ ggplot(data = cbf, aes(factor(Treatment), CBF)) +
   geom_jitter(height = 0, width = 0.3) +
   labs(x = "Treatment Type",
    	y = "",
-   	title = "CBF distrubution by treatment type",
-   	subtitle = "Red points denoting outliers")
+   	title = "CBF distrubution by treatment type")
  
 res.aov <- aov(CBF ~ Treatment, data = cbf)
 summary(res.aov)
@@ -52,8 +91,7 @@ ggplot(data = cbf1, aes(factor(Treatment), CBF)) +
   geom_jitter(height = 0, width = 0.3) +
   labs(x = "Treatment Type",
    	y = "",
-   	title = "CBF distrubution between running wheel and sedentary treatments",
-   	subtitle = "Red points denoting outliers")
+   	title = "CBF distrubution between running wheel and sedentary treatments")
  
 res.aov <- aov(CBF ~ Treatment, data = cbf1)
 summary(res.aov)
@@ -68,9 +106,52 @@ ggplot(data = cbf2, aes(factor(Treatment), CBF)) +
   geom_jitter(height = 0, width = 0.3) +
   labs(x = "Treatment Type",
    	y = "",
-   	title = "CBF distrubution between treadmill and sedentary treatments",
-   	subtitle = "Red points denoting outliers")
+   	title = "CBF distrubution between treadmill and sedentary treatments")
  
 res.aov <- aov(CBF ~ Treatment, data = cbf2)
+summary(res.aov)
+```
+
+
+
+``` {r cbf3}
+ggplot(data = cbf3, aes(factor(Treatment), CBF)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3) +
+  labs(x = "Treatment Type",
+   	y = "",
+   	title = "CBF distrubution between treadmill and sedentary treatments")
+ 
+res.aov <- aov(CBF ~ Treatment, data = cbf3)
+summary(res.aov)
+```
+
+
+```{r S1HL, echo = FALSE}
+ggplot(data = apoe3, aes(factor(Sex), S1HL)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Genotype",
+       y = "",
+       title = "Primary Somatosensory Cortex Hindlimb Region",
+       subtitle = "Red points denoting outliers") 
+
+res.aov <- aov(S1HL ~ Sex, data = apoe3)
+summary(res.aov)
+```
+
+```{r A25-L, echo = FALSE}
+ggplot(data = newL, aes(factor(geno), A25)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.color = "red") +
+  geom_jitter(height = 0, width = 0.3, aes(color = Sex)) +
+  labs(x = "Genotype",
+   	y = "",
+   	title = "Left Cingulate Cortex Area 25",
+   	subtitle = "Red points denoting outliers")
+ 
+res.aov <- aov(A25 ~ geno, data = new)
 summary(res.aov)
 ```
