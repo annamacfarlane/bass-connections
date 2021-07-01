@@ -8,7 +8,6 @@ output: pdf_document
 ```{r setup, include=FALSE}
 library(tidyverse)
 cbf <- read.csv("CBF_ZijianDong_03.csv")
-view(cbf)
 
 cbf <- cbf %>% 
     filter(! is.na(treatment)) 
@@ -72,7 +71,7 @@ tidy(m_cbf)
 
 ```{r corr}
 
-ggplot(data = cbf, aes(factor(Treatment), CBF)) +
+ggplot(data = cbf, aes(factor(treatment), CBF)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.color = "red") +
   geom_jitter(height = 0, width = 0.3) +
