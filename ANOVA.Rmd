@@ -5,6 +5,8 @@ date:."2/8/2021"
 output:.pdf_document
 ---
 
+Non-functional code 
+
 ```{r setup,include=FALSE}
 library(tidyverse)
 library(dplyr)

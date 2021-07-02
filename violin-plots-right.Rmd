@@ -22,7 +22,7 @@ new <- new %>%
   )) %>% 
   group_by(geno) 
 
-#view(new)
+view(new)
 ```
 
 ## Adjusted p-values for multiple comparisons
